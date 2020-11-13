@@ -12,7 +12,11 @@ const Layout : React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="wrap">
             <Header />
-            <Container maxWidth="sm" style={{ borderLeft: '1px solid black', borderRight: '1px solid black', paddingTop : '12px', minHeight : '90vh'}}>
+            <Container
+             maxWidth="md"
+             className="container"
+             component="article"
+             style={{ borderLeft: '1px solid black', borderRight: '1px solid black', paddingTop : '12px', minHeight : '90vh'}}>
                {children}
             </Container>
             <Footer />
