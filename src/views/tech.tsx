@@ -1,14 +1,16 @@
 import React from 'react';
 
+import Layout from '../components/layout';
+
 interface TechProps {
     
 }
 
 const Tech : React.FC<TechProps> = () => {
     return(
-        <div>
+        <Layout>
             <h1>기술블로그</h1>
-        </div>
+        </Layout>
     );
 }
 

@@ -1,14 +1,16 @@
 import React from 'react';
 
+import Layout from '../components/layout';
+
 interface AboutProps {
     
 }
 
 const About : React.FC<AboutProps> = () => {
     return(
-        <div>
+        <Layout>
             <h1>메인</h1>
-        </div>
+        </Layout>
     );
 }
 
