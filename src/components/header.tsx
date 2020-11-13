@@ -20,6 +20,7 @@ const Header: React.FC<any> = (props: HeaderProps) => {
     const [value, setValue] = useState(tapindex);
     
     const handleTap = (e : any, value : number) => {
+        setValue(value);
         handleTapIndex(value);
     }
 
