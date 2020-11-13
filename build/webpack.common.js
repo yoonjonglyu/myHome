@@ -9,6 +9,9 @@ const config = {
         path : commonPaths.outputPath,
         publicPath : '/'
     },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
+      },
     module : {
         rules : [
             {
