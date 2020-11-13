@@ -1,0 +1,1 @@
+export const TAP_INDEX : String = "tapIndex";
