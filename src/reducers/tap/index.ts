@@ -2,10 +2,10 @@ import * as actions from '../../actions';
 import * as types from '../../actions/actionTypes';
 
 interface TapState {
-    tapIndex : number
+    tapIndex : number | null
 }
 const initialState : TapState = {
-    tapIndex : 0
+    tapIndex : null
 } 
 
 const Taps = (state : TapState = initialState, action : actions.TapActions) => {
