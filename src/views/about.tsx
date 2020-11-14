@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Layout from '../components/layout';
+import Contact from '../components/contact';
 
 interface AboutProps {
     
@@ -12,9 +13,8 @@ const About : React.FC<AboutProps> = () => {
             <React.Fragment>
             <section className="about-me">
                 <h1>프로필</h1>
-                <p>따로 컴포넌트를 만든다.</p>
-                <a href="https://github.com/yoonjonglyu/" target="_blank" >github</a>
-                <a href="mailto:isa@kakao.com" >mail</a>
+                <p>타임라인방식으로 할 생각</p>
+                <Contact />
             </section>
             <section className="about-info">
                 <p>

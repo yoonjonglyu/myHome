@@ -12,8 +12,6 @@ const Footer: React.FC<FooterProps> = () => {
                     Copyright© ISA(yoonjonglyu)
                 </small>
             </Paper>
-
-
         </footer>
     );
 };
