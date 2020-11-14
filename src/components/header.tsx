@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { Paper, Tabs, Tab} from '@material-ui/core';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -26,7 +24,7 @@ const Header: React.FC<any> = (props: HeaderProps) => {
 
     return (
         <header>
-            <Paper>
+            <Paper component="nav">
                 <Tabs
                     value={value}
                     onChange={handleTap}
@@ -39,6 +37,7 @@ const Header: React.FC<any> = (props: HeaderProps) => {
                     <Tab label="Essay" component={Link} to="/essay" />
                     <Tab label="Tech" component={Link} to="/tech" />
                     <Tab label="Portfolio" component={Link} to="/portfolio" />
+
                 </Tabs>
             </Paper>
         </header>
