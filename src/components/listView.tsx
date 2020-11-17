@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
@@ -10,8 +10,12 @@ import * as actions from '../actions';
 import { RootState } from '../reducers';
 
 interface ListViewProps {
-    data : Array<any>
-    tapIndex : number | false
+    data: {
+        essay: Array<any>
+        tech: Array<any>
+        portfolio: Array<any>
+    }
+    tapIndex: number | false
 }
 
 const useStyles = makeStyles(() => ({
@@ -26,17 +30,29 @@ const ListView: React.FC<ListViewProps> = (props) => {
         data,
         tapIndex
     } = props;
-    const [tagList, setTagList] = useState([[{}]]);
+    const [tagList, setTagList]: Array<any> = useState([]);
 
-    const tempData = [// 해당 데이터를 어떻게 만드냐에 따라 뷰가 달라진다. 뷰모델 부분에서 가공할 필요가 있다.
-        [{ name: 'test1' }, { name: 'test1232323' }, { name: 'test1aasdsada' }],
-        [{ name: 'test1' }, { name: 'test1232323' }, { name: 'test1aasdsada' }],
-        [{ name: 'test1' }, { name: 'test1232323' }, { name: 'test1aasdsada' }]
-    ];
-    
-    data.length > 0 ? setTagList(data) : setTagList(tempData); 
+    useEffect(() => {
+        let state: object;
+        switch (tapIndex) {
+            case 2:
+                state = data.essay;
+                break;
+            case 3:
+                state = data.tech;
+                break;
+            case 4:
+                state = data.portfolio;
+                break;
+            default:
+                state = [];
+                break;
+        }
+        setTagList(state);
+    }, []);
 
-    const ListRow = tagList.map((items: Array<any>, key : number) => {
+
+    const ListRow = tagList.map((items: Array<any>, key: number) => {
         return (
             <Grid container item xs={12} spacing={1} key={key}>
                 <ListItem children={items} />
@@ -51,14 +67,14 @@ const ListView: React.FC<ListViewProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ TagList, Taps } : RootState) => {
+const mapStateToProps = ({ TagList, Taps }: RootState) => {
     return {
-        data : TagList.tagList,
+        data: TagList.tagList,
         tapIndex: Taps.tapIndex
     };
 };
 
-const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
     return {
     };
 }

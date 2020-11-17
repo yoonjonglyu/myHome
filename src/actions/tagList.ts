@@ -1,6 +1,12 @@
 import * as types from './actionTypes';
 
-export const TAGLIST = (list : Array<any>) => {
+interface TagProps {
+    essay : Array<any>
+    tech : Array<any>
+    portfolio : Array<any>
+}
+
+export const TAGLIST = (list : TagProps) => {
     return {
         type : types.TAG_LIST,
         payload : list
