@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Paper, Tabs, Tab} from '@material-ui/core';
 
@@ -8,7 +8,7 @@ import * as actions from '../actions';
 import { RootState } from '../reducers';
 
 interface HeaderProps {
-    tapIndex : number,
+    tapIndex : number | false,
     handleTapIndex: Function
 };
 
@@ -23,6 +23,36 @@ const Header: React.FC<any> = (props: HeaderProps) => {
         setValue(value);
         handleTapIndex(value);
     }
+    useEffect(() => {
+        if(tapIndex === false){
+            const state : Array<string> = location.pathname.split('\/');
+
+            switch(state[1]){
+                case '':
+                    setValue(0);
+                    handleTapIndex(0);
+                    break;
+                case 'about':
+                    setValue(1);
+                    handleTapIndex(1);
+                    break;
+                case 'essay':
+                    setValue(2);
+                    handleTapIndex(2);
+                    break;
+                case 'tech':
+                    setValue(3);
+                    handleTapIndex(3);
+                    break;
+                case 'portfolio':
+                    setValue(4);
+                    handleTapIndex(4);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }, []);
 
     return (
         <header>
