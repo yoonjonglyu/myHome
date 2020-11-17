@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
 import Taps from './tap';
+import TagList from './tag';
 
 const RootReducers = combineReducers({
-    Taps
+    Taps, TagList
 });
 
 export default RootReducers;
