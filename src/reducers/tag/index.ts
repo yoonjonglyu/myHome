@@ -1,3 +1,4 @@
+import { Reducer } from 'redux';
 import * as actions from '../../actions';
 import * as types from '../../actions/actionTypes';
 
@@ -9,7 +10,7 @@ const initialState : TagListState = {
     tagList : []
 };
 
-const TagList = (state : TagListState = initialState, action : actions.TapActions) => {
+const TagList : Reducer<TagListState, actions.TagActions> = (state = initialState, action) => {
     if(action.type === types.TAG_LIST){
         return {
             ...state,

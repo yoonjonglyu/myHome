@@ -1,3 +1,4 @@
+import { Reducer } from 'redux';
 import * as actions from '../../actions';
 import * as types from '../../actions/actionTypes';
 
@@ -8,7 +9,7 @@ const initialState : TapState = {
     tapIndex : false
 } 
 
-const Taps = (state : TapState = initialState, action : actions.TapActions) => {
+const Taps : Reducer<TapState, actions.TapActions> = (state = initialState, action) => {
     if(action.type === types.TAP_INDEX){
         return {
             ...state,
