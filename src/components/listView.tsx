@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
 import ListItem from './listItem';
 
+import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { RootState } from '../reducers';
 
 interface ListViewProps {
     data : Array<any>
+    tapIndex : number | false
 }
 
 const useStyles = makeStyles(() => ({
@@ -20,8 +23,10 @@ const useStyles = makeStyles(() => ({
 const ListView: React.FC<ListViewProps> = (props) => {
     const classes = useStyles();
     const {
-        data
+        data,
+        tapIndex
     } = props;
+    const [tagList, setTagList] = useState([[{}]]);
 
     const tempData = [// 해당 데이터를 어떻게 만드냐에 따라 뷰가 달라진다. 뷰모델 부분에서 가공할 필요가 있다.
         [{ name: 'test1' }, { name: 'test1232323' }, { name: 'test1aasdsada' }],
@@ -29,7 +34,7 @@ const ListView: React.FC<ListViewProps> = (props) => {
         [{ name: 'test1' }, { name: 'test1232323' }, { name: 'test1aasdsada' }]
     ];
     
-    const tagList = data.length > 0 ? data : tempData; 
+    data.length > 0 ? setTagList(data) : setTagList(tempData); 
 
     const ListRow = tagList.map((items: Array<any>, key : number) => {
         return (
@@ -46,15 +51,15 @@ const ListView: React.FC<ListViewProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ TagList } : React.ComponentState) => {
+const mapStateToProps = ({ TagList, Taps } : RootState) => {
     return {
-        data : TagList.tagList
+        data : TagList.tagList,
+        tapIndex: Taps.tapIndex
     };
 };
 
-const mapDispatchToProps = (dispatch : React.Dispatch<Function>) => {
+const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
     return {
-        
     };
 }
 

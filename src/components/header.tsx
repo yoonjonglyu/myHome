@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Paper, Tabs, Tab} from '@material-ui/core';
 
+import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { RootState } from '../reducers';
 
 interface HeaderProps {
-    tapindex : number,
+    tapIndex : number,
     handleTapIndex: Function
 };
 
 const Header: React.FC<any> = (props: HeaderProps) => {
     const {
-        tapindex,
+        tapIndex,
         handleTapIndex
     } = props;
-    const [value, setValue] = useState(tapindex);
+    const [value, setValue] = useState(tapIndex);
     
     const handleTap = (e : any, value : number) => {
         setValue(value);
@@ -44,13 +46,13 @@ const Header: React.FC<any> = (props: HeaderProps) => {
     );
 };
 
-const mapStateToProps = ({ Taps } : any) => {
+const mapStateToProps = ({ Taps } : RootState) => {
     return {
-        tapindex: Taps.tapIndex
+        tapIndex: Taps.tapIndex
     };
 };
 
-const mapDispatchToProps = (dispatch : any) => {
+const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
     return {
         handleTapIndex : (value : number) => {dispatch(actions.TAPINDEX(value))} 
     };
