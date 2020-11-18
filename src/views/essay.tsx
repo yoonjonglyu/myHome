@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
+import BlogPost from '../components/blogPost';
 
 interface EssayProps {
     
@@ -16,8 +17,9 @@ const Essay : React.FC<EssayProps> = () => {
                     <ListView />
                 </section>
                 <section className="essay-items">
+                    <BlogPost />
                     <p>
-                        글쓰고 태그달고 댓글창달고 아직 좋은 아이디어가 안떠오른다.
+                        아직 좋은 아이디어가 안떠오른다.
                     </p>
                 </section>
             </React.Fragment>

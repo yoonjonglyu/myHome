@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
+import BlogPost from '../components/blogPost';
 
 interface TechProps {
     
@@ -17,8 +18,7 @@ const Tech : React.FC<TechProps> = () => {
                     <ListView />
                 </section>
                 <section className="tech-contents">
-                    <p>그냥 일반적인 블로그 글</p>
-                    디스커스로 댓글창을 달아볼까 생각중이다.
+                    <BlogPost />
                 </section>
             </React.Fragment>
         </Layout>
