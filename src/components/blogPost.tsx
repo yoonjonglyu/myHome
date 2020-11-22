@@ -35,6 +35,9 @@ const BlogPostProps: React.FC<BlogPostProps> = () => {
                     코드는 pre로 감싸서 p태그 밖의 스타일링은 class를 통해서가 아니라 태그 자체로 스타일링 해야할거 같다.
                 </p>
             </div>
+            <div className="post-tags">
+                태그 목록들 그리드로 넣으면 되지 않을까 생각중
+            </div>
             <div className="post-comments">
                 댓글 들갈 부분
             </div>
