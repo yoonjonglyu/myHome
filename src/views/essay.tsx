@@ -12,7 +12,7 @@ interface EssayProps {
 const Essay : React.FC<EssayProps> = () => {
     const tempProps = false;
 
-    const TechContents =  tempProps ? PostList : BlogPost;
+    const EssayContents =  tempProps ? PostList : BlogPost;
 
     return(
         <Layout>
@@ -22,7 +22,7 @@ const Essay : React.FC<EssayProps> = () => {
                     <ListView />
                 </section>
                 <section className="essay-items">
-                    <BlogPost />
+                    <EssayContents />
                     <p>
                         아직 좋은 아이디어가 안떠오른다.
                     </p>
