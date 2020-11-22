@@ -14,6 +14,7 @@ const About : React.FC<AboutProps> = () => {
             <React.Fragment>
             <section className="about-me">
                 <h1>프로필</h1>
+                <p>자기소개 간략히 한다.</p>
                 <ProfileTimeLine />
                 <Contact />
             </section>
