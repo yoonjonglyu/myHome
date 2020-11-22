@@ -24,12 +24,15 @@ const BlogPostProps: React.FC<BlogPostProps> = () => {
                 <img src="#/" alt="이미지는 img src로 단락 밖에" />
                 <p>
                     이렇게 말이다. 해드라인도 p태그 밖에 위치한다.<br />
-                    코드는 p태그 안에 span 태그로 감싸서 처리한다.
-                    <span className="post-code">
+
+                </p>
+                <pre className="post-code" style={{border : "1px solid red"}}>
                         code : js
                         const foo = bar;
                         console.log(foo);
-                    </span>
+                </pre>
+                <p>
+                    코드는 pre로 감싸서 p태그 밖의 스타일링은 class를 통해서가 아니라 태그 자체로 스타일링 해야할거 같다.
                 </p>
             </div>
             <div className="post-comments">
