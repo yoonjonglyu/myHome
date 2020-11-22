@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import Contact from '../components/contact';
+import ProfileTimeLine from '../components/profileTimeLine';
 
 interface AboutProps {
     
@@ -13,7 +14,7 @@ const About : React.FC<AboutProps> = () => {
             <React.Fragment>
             <section className="about-me">
                 <h1>프로필</h1>
-                <p>타임라인방식으로 할 생각</p>
+                <ProfileTimeLine />
                 <Contact />
             </section>
             <section className="about-info">
