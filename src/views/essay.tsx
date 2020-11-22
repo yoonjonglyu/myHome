@@ -3,12 +3,17 @@ import React from 'react';
 import Layout from '../components/layout';
 import ListView from '../components/listView';
 import BlogPost from '../components/blogPost';
+import PostList from '../components/postList';
 
 interface EssayProps {
     
 }
 
 const Essay : React.FC<EssayProps> = () => {
+    const tempProps = false;
+
+    const TechContents =  tempProps ? PostList : BlogPost;
+
     return(
         <Layout>
             <React.Fragment>

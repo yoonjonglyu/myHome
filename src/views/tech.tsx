@@ -3,12 +3,17 @@ import React from 'react';
 import Layout from '../components/layout';
 import ListView from '../components/listView';
 import BlogPost from '../components/blogPost';
+import PostList from '../components/postList';
 
 interface TechProps {
     
 }
 
 const Tech : React.FC<TechProps> = () => {
+    const tempProps = true;
+
+    const TechContents =  tempProps ? PostList : BlogPost;
+
     return(
         <Layout>
             <React.Fragment>
@@ -18,7 +23,7 @@ const Tech : React.FC<TechProps> = () => {
                     <ListView />
                 </section>
                 <section className="tech-contents">
-                    <BlogPost />
+                    <TechContents />
                 </section>
             </React.Fragment>
         </Layout>
