@@ -9,6 +9,21 @@ interface ContactProps {
 }
 
 const useStyles = makeStyles((theme) => ({
+    root : {
+      textAlign : 'center',  
+    },
+    ul : {
+        listStyle : 'none',
+        margin : '8px auto',
+        padding : 0
+    },
+    li : {
+        display : 'inline-block',
+        margin: '5px'
+    },
+    h1 : {
+        margin: '8px 0'
+    },
     pink: {
         color: theme.palette.getContrastText(pink[500]),
         backgroundColor: pink[500],
@@ -27,12 +42,12 @@ const Contact: React.FC<ContactProps> = () => {
     const classes = useStyles();
 
     return (
-        <Card>
-            <h1>CONTACT</h1>
-            <ul>
-                <li><a href="https://github.com/yoonjonglyu/" target="_blank" ><Avatar className={classes.lightBlue}><GitHub /></Avatar></a></li>
-                <li><a href="mailto:isa@kakao.com" ><Avatar className={classes.pink}><Email /></Avatar></a></li>
-                <li><a href="#" ><Avatar className={classes.deepOrange}><Description /></Avatar></a></li>
+        <Card className={classes.root}>
+            <h1 className={classes.h1}>CONTACT</h1>
+            <ul className={classes.ul}>
+                <li className={classes.li}><a href="https://github.com/yoonjonglyu/" target="_blank" title="ISA GITHUB" ><Avatar className={classes.lightBlue}><GitHub /></Avatar></a></li>
+                <li className={classes.li}><a href="mailto:isa@kakao.com" title="메일보내기"><Avatar className={classes.pink}><Email /></Avatar></a></li>
+                <li className={classes.li}><a href="#" title="이력서" ><Avatar className={classes.deepOrange}><Description /></Avatar></a></li>
             </ul>
         </Card>
     );
