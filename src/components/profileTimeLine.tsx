@@ -208,7 +208,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
                 그로 인해서 <strong>내가 개발자라는 업을 삼으면서 목표로 삼았던 것은 바로 귀도 반 로섬(파이썬 창시자) 와 같이 메이저한 언어를 개발 하는 것이다.</strong><br />
                 그러나, 해당 목표는 <strong>너무 거대한 목표이기에 해당 목표를 위해서 차근차근 작은 목표를 만들어서 하나씩 이루어가고 있는중이다.</strong><br /><br />
                 지금까지 이룬 목표는 "1. 개발 회사에서 일 잘 해보자. 2. 1년차 쯤 연봉 3천넘기자." 이고 <br />
-                지금 당장의 목표는 <strong>"1.오픈소스 개발(컨트리뷰터)와 네카라 같은 IT 기업에서 S급 인재가 되어보자."</strong>이다.
+                지금 당장의 목표는 <strong>"1.오픈소스 개발(컨트리뷰터)과 네카라 같은 IT 기업에서 S급 인재가 되어보자."</strong>이다.
               </Typography>
             </Paper>
           </TimelineContent>
