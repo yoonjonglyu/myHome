@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Tabs, Tab} from '@material-ui/core';
 
 import { Action, Dispatch } from 'redux';
@@ -12,7 +13,18 @@ interface HeaderProps {
     handleTapIndex: Function
 };
 
+const useStyles = makeStyles(() => ({
+    root: {
+        position : 'fixed',
+        width : '99%',
+        top: 0,
+        left: '0.5%',
+        zIndex : 999999
+    }
+}));
+
 const Header: React.FC<any> = (props: HeaderProps) => {
+    const classes = useStyles();
     const {
         tapIndex,
         handleTapIndex
@@ -55,7 +67,7 @@ const Header: React.FC<any> = (props: HeaderProps) => {
     }, []);
 
     return (
-        <header>
+        <header className={classes.root}>
             <Paper component="nav">
                 <Tabs
                     value={value}
