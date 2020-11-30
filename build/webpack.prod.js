@@ -16,7 +16,7 @@ const config = {
     module : {
         rules : [
             {
-                test : /\.(png|jpe?g|git)$/,
+                test : /\.(png|jpe?g|git|pdf)$/,
                 loader : 'file-loader',
                 options : {
                     name : `assets/[contenthash].[ext]`,
