@@ -13,8 +13,33 @@ const About : React.FC<AboutProps> = () => {
         <Layout>
             <React.Fragment>
             <section className="about-me">
-                <h1>프로필</h1>
-                <p>자기소개 간략히 한다.</p>
+                <h1 style={{textAlign : 'center', fontSize : '1.6rem'}}>프로필</h1>
+                <h2>류윤종(ISA)</h2>
+                <ul style={{padding : '8px 20px', fontSize : '1.1rem'}}>
+                    <li>1995.05.24</li>
+                    <li>장인이 되고 싶은 괴짜</li>
+                    <li>
+                        기술 스택
+                        <ul>
+                            <li>HTML, CSS</li>
+                            <li>JavaScript(ES5, ES6~), jQuery</li>
+                            <li>TypeScript</li>
+                            <li>React, Vue</li>
+                            <li>Canvas</li>
+                            <li>Parsing</li>
+                            <li>React Native</li>
+                            <li>PHP(5~7, 모던), CMS(그누보드, 워드프레스)</li>
+                            <li>Node.js, Express.js</li>
+                            <li>Socket.io</li>
+                            <li>Mysql, Marria, Postgresql</li>
+                            <li>AWS, iwinv(클라우드 & 웹호스팅)</li>
+                            <li>docker, linux(ubuntu, centos)</li>
+                            <li>Git, Github, Gitlab</li>
+                            <li>그 외 기타 등등</li>
+                        </ul>
+                    </li>
+                    <li>현재 방통대 재학중</li>
+                </ul>
                 <ProfileTimeLine />
                 <Contact />
             </section>
