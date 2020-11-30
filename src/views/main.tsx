@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Layout from '../components/layout';
 import ProfileTimeLine from '../components/profileTimeLine';
@@ -17,9 +18,9 @@ const Main : React.FC<MainProps> = () => {
             </section>
             <section className="main-about">
                 <h2 style={{ textAlign : 'center'}}>연력</h2>
-                <a href="./about" title="더 알아보기" style={{ textDecoration : 'none', color : 'unset'}}>
+                <Link to="./about" title="더 알아보기" style={{ textDecoration : 'none', color : 'unset'}}>
                     <ProfileTimeLine />
-                </a>
+                </Link>
             </section>
             <section className="main-skill">
                 <p>기술소개</p>
