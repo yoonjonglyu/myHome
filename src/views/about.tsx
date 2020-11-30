@@ -1,21 +1,46 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import Contact from '../components/contact';
 import ProfileTimeLine from '../components/profileTimeLine';
 
+import devFront1 from '../assets/images/devmatch.jpg';
+import samTest from '../assets/images/sam-test.jpg';
+import samType from '../assets/images/sam-type.jpg';
+
 interface AboutProps {
     
 }
+
+const HeadLine1 = styled.h1`
+    text-align : center;
+    font-size : 1.6rem;
+`
+const AboutList = styled.ul`
+    padding : 8px 20px;
+    font-size : 1.1rem;
+`
+const HeadLine2 = styled.h2`
+    text-align : center;
+    margin-top : 24px;
+`
+const HeadLine3 = styled.h3`
+    text-align : center;
+`
+const Image = styled.img`
+    width : 100%;
+`;
+
 
 const About : React.FC<AboutProps> = () => {
     return(
         <Layout>
             <React.Fragment>
             <section className="about-me">
-                <h1 style={{textAlign : 'center', fontSize : '1.6rem'}}>프로필</h1>
+                <HeadLine1>프로필</HeadLine1>
                 <h2>류윤종(ISA)</h2>
-                <ul style={{padding : '8px 20px', fontSize : '1.1rem'}}>
+                <AboutList>
                     <li>1995.05.24</li>
                     <li>장인이 되고 싶은 괴짜</li>
                     <li>
@@ -39,14 +64,24 @@ const About : React.FC<AboutProps> = () => {
                         </ul>
                     </li>
                     <li>현재 방통대 재학중</li>
-                </ul>
+                </AboutList>
                 <ProfileTimeLine />
                 <Contact />
             </section>
             <section className="about-info">
-                <p>
-                    각종 챌린지 또는 인적성 결과
-                </p>
+                <HeadLine2>각종 챌린지 및 인적성 결과</HeadLine2>
+                <HeadLine3>프로그래머스 2020 Dev-Matching: 웹 프론트엔드 개발자(하반기)</HeadLine3>
+                <a href={devFront1} target="_blank" title="프로그래머스 하반기 데브매칭">
+                    <Image src={devFront1}/>
+                </a>
+                <HeadLine3>사람인 인적성</HeadLine3>
+                <a href={samTest} target="_blank" title="사람인 인적성검사 결과">
+                    <Image src={samTest}/>
+                </a>
+                <HeadLine3>사람인 성향분석</HeadLine3>
+                <a href={samType} target="_blank" title="사람인 성향 분석 결과">
+                    <Image src={samType}/>
+                </a>
             </section>
             </React.Fragment>
         </Layout>
