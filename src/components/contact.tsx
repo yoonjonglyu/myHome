@@ -5,6 +5,8 @@ import { lightBlue, pink, deepOrange } from '@material-ui/core/colors';
 import Avatar from '@material-ui/core/Avatar';
 import { GitHub, Email, Description } from '@material-ui/icons';
 
+import profile from '../assets/pdf/programmers-ISA.pdf';
+
 interface ContactProps {
 }
 
@@ -47,7 +49,7 @@ const Contact: React.FC<ContactProps> = () => {
             <ul className={classes.ul}>
                 <li className={classes.li}><a href="https://github.com/yoonjonglyu/" target="_blank" title="ISA GITHUB" ><Avatar className={classes.lightBlue}><GitHub /></Avatar></a></li>
                 <li className={classes.li}><a href="mailto:isa@kakao.com" title="메일보내기"><Avatar className={classes.pink}><Email /></Avatar></a></li>
-                <li className={classes.li}><a href="#" title="이력서" ><Avatar className={classes.deepOrange}><Description /></Avatar></a></li>
+                <li className={classes.li}><a href={profile} target="_blank" title="이력서" ><Avatar className={classes.deepOrange}><Description /></Avatar></a></li>
             </ul>
         </Card>
     );
