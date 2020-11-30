@@ -16,18 +16,18 @@ interface AboutProps {
 const HeadLine1 = styled.h1`
     text-align : center;
     font-size : 1.6rem;
-`
+`;
 const AboutList = styled.ul`
     padding : 8px 20px;
     font-size : 1.1rem;
-`
+`;
 const HeadLine2 = styled.h2`
     text-align : center;
     margin-top : 24px;
-`
+`;
 const HeadLine3 = styled.h3`
     text-align : center;
-`
+`;
 const Image = styled.img`
     width : 100%;
 `;
