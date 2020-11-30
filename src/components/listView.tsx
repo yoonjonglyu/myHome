@@ -49,7 +49,7 @@ const ListView: React.FC<ListViewProps> = (props) => {
                 break;
         }
         setTagList(state);
-    }, []);
+    }, [ tapIndex ]);
 
 
     const ListRow = tagList.map((items: Array<any>, key: number) => {
