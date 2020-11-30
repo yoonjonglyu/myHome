@@ -72,15 +72,15 @@ const About : React.FC<AboutProps> = () => {
                 <HeadLine2>각종 챌린지 및 인적성 결과</HeadLine2>
                 <HeadLine3>프로그래머스 2020 Dev-Matching: 웹 프론트엔드 개발자(하반기)</HeadLine3>
                 <a href={devFront1} target="_blank" title="프로그래머스 하반기 데브매칭">
-                    <Image src={devFront1}/>
+                    <Image src={devFront1} alt="데브매칭 상위 5프로" />
                 </a>
                 <HeadLine3>사람인 인적성</HeadLine3>
                 <a href={samTest} target="_blank" title="사람인 인적성검사 결과">
-                    <Image src={samTest}/>
+                    <Image src={samTest} alt="인적성 직무접합 높음, 상위 1프로" />
                 </a>
                 <HeadLine3>사람인 성향분석</HeadLine3>
                 <a href={samType} target="_blank" title="사람인 성향 분석 결과">
-                    <Image src={samType}/>
+                    <Image src={samType} alt="성향 분석 관습, 진취, 예술, 탐구, 현실형" />
                 </a>
             </section>
             </React.Fragment>
