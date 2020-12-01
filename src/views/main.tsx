@@ -1,14 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ProfileTimeLine from '../components/profileTimeLine';
 
+import { Action, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { RootState } from '../reducers';
+
 interface MainProps {
-    
+    tapIndex : number | false,
+    handleTapIndex: Function
 }
 
-const Main : React.FC<MainProps> = () => {
+const QuickLink = styled(Link)`
+    text-decoration : none;
+    color : unset;
+`;
+
+const Main : React.FC<MainProps> = (props) => {
+    const {
+        tapIndex,
+        handleTapIndex
+    } = props;
+
+    const handleTap = (e : any, value : number) => {
+        handleTapIndex(value);
+    }
+
     return(
         <Layout>
             <React.Fragment>
@@ -18,9 +39,9 @@ const Main : React.FC<MainProps> = () => {
             </section>
             <section className="main-about">
                 <h2 style={{ textAlign : 'center'}}>연력</h2>
-                <Link to="./about" title="더 알아보기" style={{ textDecoration : 'none', color : 'unset'}}>
+                <QuickLink to="./about" title="더 알아보기" onClick={(e) => {handleTap(e, 1)}}>
                     <ProfileTimeLine />
-                </Link>
+                </QuickLink>
             </section>
             <section className="main-skill">
                 <p>기술소개</p>
@@ -31,6 +52,18 @@ const Main : React.FC<MainProps> = () => {
             </React.Fragment>
         </Layout>
     );
-}
+};
 
-export default Main;
+const mapStateToProps = ({ Taps } : RootState) => {
+    return {
+        tapIndex : Taps.tapIndex
+    };
+};
+
+const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
+    return {
+        handleTapIndex : (value : number) => {dispatch(actions.TAPINDEX(value))} 
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
