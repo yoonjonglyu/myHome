@@ -11,7 +11,6 @@ import * as actions from '../actions';
 import { RootState } from '../reducers';
 
 interface MainProps {
-    tapIndex : number | false,
     handleTapIndex: Function
 }
 
@@ -22,7 +21,6 @@ const QuickLink = styled(Link)`
 
 const Main : React.FC<MainProps> = (props) => {
     const {
-        tapIndex,
         handleTapIndex
     } = props;
 
@@ -54,9 +52,8 @@ const Main : React.FC<MainProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ Taps } : RootState) => {
+const mapStateToProps = (state : RootState) => {
     return {
-        tapIndex : Taps.tapIndex
     };
 };
 
