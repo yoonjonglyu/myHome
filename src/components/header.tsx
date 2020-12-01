@@ -38,8 +38,8 @@ const Header: React.FC<HeaderProps> = (props) => {
     useEffect(() => {
         if(tapIndex === false){
             const state : Array<string> = location.pathname.split('\/');
-
-            switch(state[1]){
+            
+            switch(state[2]){
                 case '':
                     setValue(0);
                     handleTapIndex(0);
