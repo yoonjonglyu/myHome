@@ -1,24 +1,40 @@
 import React from 'react';
-
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
+import PostList from '../components/postList';
 
 interface PortfolioProps {
-    
 }
 
+const Headline1 = styled.h1`
+    text-align : center;
+`;
+const CategorySection = styled.section`
+    margin : 0;
+`;
+const ContentsSection = styled.section`
+    margin-top : 16px;
+    border : 1px solid #00adb5;
+    border-left : 0;
+    border-right : 0;
+`;
+
+
 const Portfolio : React.FC<PortfolioProps> = () => {
+    const arr = [{}, {}, {}];
+
     return(
         <Layout>
             <React.Fragment>
-                <section className="portfolio-category">
-                    <h1>포트폴리오</h1>
+                <CategorySection className="portfolio-category">
+                    <Headline1>포트폴리오</Headline1>
                     <ListView />
-                </section>
-                <section className="portfolio-items">
-                    <p>스크롤 방식의 페이지뷰</p>
-                </section>
+                </CategorySection>
+                <ContentsSection className="portfolio-contents">
+                    <PostList postList={arr} />
+                </ContentsSection>
             </React.Fragment>
         </Layout>
     );

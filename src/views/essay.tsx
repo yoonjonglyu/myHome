@@ -21,8 +21,8 @@ const Essay : React.FC<EssayProps> = () => {
                     <h1>에세이 겸 일기</h1>
                     <ListView />
                 </section>
-                <section className="essay-items">
-                    <EssayContents />
+                <section className="essay-contents">
+                    <EssayContents postList={[]} />
                     <p>
                         아직 좋은 아이디어가 안떠오른다.
                     </p>

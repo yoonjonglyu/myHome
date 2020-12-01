@@ -23,7 +23,7 @@ const Tech : React.FC<TechProps> = () => {
                     <ListView />
                 </section>
                 <section className="tech-contents">
-                    <TechContents />
+                    <TechContents postList={[{}]} />
                 </section>
             </React.Fragment>
         </Layout>
