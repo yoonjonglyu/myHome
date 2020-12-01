@@ -11,7 +11,7 @@ interface PostProps {
 }
 
 interface PostListProps {
-    postList : Array<PostProps> 
+    postList : Array<PostProps>
 }
 
 const ContentsItem = styled.div`
@@ -39,7 +39,7 @@ const PostList: React.FC<PostListProps> = (props) => {
         postList
     } = props;
 
-    const List = postList.map((post, key) => {
+    const List = postList.length > 0 ? postList.map((post, key) => {
         return (
             <ContentsItem key={key}>
                 <PostLink to={`?post=${post.postIdx}`}>
@@ -51,7 +51,7 @@ const PostList: React.FC<PostListProps> = (props) => {
                 </PostLink>
             </ContentsItem>
         );
-    });
+    }) : (<ContentsItem> <Headline style={{textAlign : 'center'}}>원하시는 조건에 해당 하는 글이 없습니다.</Headline> </ContentsItem>); // 나중에 꾸미자
 
     return (
         <div className="post-list">
