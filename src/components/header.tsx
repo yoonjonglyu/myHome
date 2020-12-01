@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Header: React.FC<any> = (props: HeaderProps) => {
+const Header: React.FC<HeaderProps> = (props) => {
     const classes = useStyles();
     const {
         tapIndex,
