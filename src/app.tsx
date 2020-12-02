@@ -10,7 +10,7 @@ import NotFound from './views/notFound';
 
 const App: React.FC = () => {
     return (
-        <Router basename="/myHome">
+        <Router>
             <Switch>
                 <Route exact path="/" component={Main} />
                 <Route exact path="/about" component={About} />
