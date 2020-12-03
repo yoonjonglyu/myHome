@@ -1,31 +1,50 @@
 import React, { useEffect } from 'react';
 
+import TagList from '../components/TagList';
+
 interface BlogPostProps {
 
 }
 
 const BlogPostProps: React.FC<BlogPostProps> = () => {
-    const Disqus = () => {
+    const Disqus = (disqus_title: string, disqus_url: string) => {
+        console.log(disqus_url)
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        const disqus_config = function () {
+            this.page.url = disqus_url;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = disqus_title; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
-        */
-        (function () { // DON'T EDIT BELOW THIS LINE
-            const d = document, s = d.createElement('script');
-            s.src = 'https://https-yoonjonglyu-github-io-myhome.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', `${new Date()}`);
-            (d.head || d.body).appendChild(s);
-        })();
-    }
+        if (typeof (DISQUS) === 'undefined') {
+            (function () { // DON'T EDIT BELOW THIS LINE
+                const d = document, s = d.createElement('script');
+                s.src = 'https://https-yoonjonglyu-github-io-myhome.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', `${+new Date()}`);
+                (d.head || d.body).appendChild(s);
+            })();
+        } else {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = disqus_url;
+                    this.page.url = disqus_url;
+                    this.page.title = disqus_title;
+                }
+            });
+        }
+    };
 
     useEffect(() => {
-        Disqus();
+        Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/')[1]}`);
     }, []);
+    const tempTags = [
+        { key: 0, label: 'Angular' },
+        { key: 1, label: 'jQuery' },
+        { key: 2, label: 'Polymer' },
+        { key: 3, label: 'React' },
+        { key: 4, label: 'Vue.js' },
+    ];
 
     return (
         <React.Fragment>
@@ -58,7 +77,7 @@ const BlogPostProps: React.FC<BlogPostProps> = () => {
                 </p>
             </div>
             <div className="post-tags">
-                태그 목록들 그리드로 넣으면 되지 않을까 생각중
+                <TagList taglist={tempTags} />
             </div>
             <div className="post-comments">
                 <div id="disqus_thread"></div>
