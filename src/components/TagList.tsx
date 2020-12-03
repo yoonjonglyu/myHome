@@ -37,7 +37,7 @@ const TagList: React.FC<TagListProps> = (props) => {
     return (
       <li key={data.key}>
         <Chip
-          to={`tags/${data.key}`}
+          to={`?tags=${data.key}`}
           label={data.label}
           className={classes.chip}
           component={Link}
