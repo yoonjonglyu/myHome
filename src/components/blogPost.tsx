@@ -36,8 +36,9 @@ const BlogPostProps: React.FC<BlogPostProps> = () => {
     };
 
     useEffect(() => {
-        Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/')[1]}`);
+        Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/').slice(1).join('\/')}`);
     }, []);
+
     const tempTags = [
         { key: 0, label: 'Angular' },
         { key: 1, label: 'jQuery' },
