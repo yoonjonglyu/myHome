@@ -14,16 +14,23 @@ interface TagListProps {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    listStyle: 'none',
-    padding: theme.spacing(0.5),
-    margin: 0,
+    display : 'flex',
+    flexWrap : 'wrap',
+    listStyle : 'none',
+    padding : theme.spacing(0.5),
+    margin : 0,
   },
-  chip: {
-    margin: theme.spacing(0.5),
+  chip : {
+    margin : theme.spacing(0.5),
     cursor : 'pointer'
   },
+  headLine: {
+    display : 'block',
+    margin : '8px 3px',
+    fontSize : '1rem',
+    textAlign : 'unset',
+    color : '#b83b5e'
+  }
 }));
 
 const TagList: React.FC<TagListProps> = (props) => {
@@ -47,9 +54,12 @@ const TagList: React.FC<TagListProps> = (props) => {
   });
 
   return (
+    <React.Fragment>
+    <h2 className={classes.headLine}># 태그리스트</h2>
     <Paper component="ul" className={classes.root}>
       {TagItems}
     </Paper>
+    </React.Fragment>
   );
 };
 
