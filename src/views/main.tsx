@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
+import Intro from '../components/intro';
 import ProfileTimeLine from '../components/profileTimeLine';
 
 import { Action, Dispatch } from 'redux';
@@ -32,8 +33,7 @@ const Main : React.FC<MainProps> = (props) => {
         <Layout>
             <React.Fragment>
             <section className="main-headline">
-                <h1>메인</h1>
-                <p>타이핑 느낌의 인사말 넣고</p>
+                <Intro />
             </section>
             <section className="main-about">
                 <h2 style={{ textAlign : 'center'}}>연력</h2>
