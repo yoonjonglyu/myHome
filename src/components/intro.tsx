@@ -107,7 +107,13 @@ const Intro: React.FC<IntroProps> = () => {
     };
 
     useEffect(() => {
-        setTimeout(typeIntro, time);
+        const set = setTimeout(typeIntro, time);
+        
+        const clean = () => {
+            clearTimeout(set);
+        }
+        
+        return  clean;
     }, [headline, about, intro]);
 
     return (
