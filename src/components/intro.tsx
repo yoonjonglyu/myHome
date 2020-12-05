@@ -27,11 +27,10 @@ const IntroBox = styled.div`
 const Headline = styled.h1<{isEnd : boolean}>`
     display : inline-block;
     margin : 90px 0 20px 0;
-    font-size : ${props => props.isEnd ? "2rem" : "2.5rem"};
+    font-size : ${props => props.isEnd ? "2.5rem" : "2rem"};
     line-height : 2rem;
     color : #eaeaea;
-    animation : ${Cursor} 0.5s step-end infinite;
-    animation : ${props => props.isEnd ? '' : "none"}
+    animation : ${props => props.isEnd ? "none" : Cursor} 0.5s step-end infinite;
 `;
 const AboutHead = styled.span<{isEnd : boolean}>`
     display : inline-block;
@@ -39,8 +38,7 @@ const AboutHead = styled.span<{isEnd : boolean}>`
     font-size : 1.3rem;
     line-height : 1.6rem;
     color : #08d9d6;
-    animation : ${Cursor} 0.5s step-end infinite;
-    animation : ${props => props.isEnd ? '' : StarLight} 0.5s step-end infinite;
+    animation : ${props => props.isEnd ? StarLight : Cursor} 0.5s step-end infinite;
 `;
 const IntroText = styled.span`
     display : inline-block;
@@ -62,8 +60,8 @@ const Intro: React.FC<IntroProps> = () => {
     const [about, setAbout] = useState("");
     const [intro, setIntro] = useState("");
     const [introIndex, setIntroIndex] = useState(0);
-    const [headAvail, setHeadAvail] = useState(true);
-    const [aboutAvail, setAboutAvail] = useState(true);
+    const [headAvail, setHeadAvail] = useState(false);
+    const [aboutAvail, setAboutAvail] = useState(false);
     const [time, setTime] = useState(100);
 
     const typing = (dom: React.Dispatch<React.SetStateAction<string>>, text: string) => {
@@ -78,8 +76,8 @@ const Intro: React.FC<IntroProps> = () => {
             const state = aboutText.split('');
             typing(setAbout, `${about}${state[about.length]}`);
 
-            if (headAvail === true) { 
-                setHeadAvail(false);
+            if (headAvail === false) { 
+                setHeadAvail(true);
             }
         } else if (intro.length < subText[introIndex].length) { // intro typing
             if (intro.length === (subText[introIndex].length - 1)) { // 문장 완성 후 잠시 멈춤
@@ -88,8 +86,8 @@ const Intro: React.FC<IntroProps> = () => {
             const state = subText[introIndex].split('');
             typing(setIntro, `${intro}${state[intro.length]}`);
 
-            if (aboutAvail === true) {
-                setAboutAvail(false);
+            if (aboutAvail === false) {
+                setAboutAvail(true);
                 setTime(150);
             }
         } else { // intro 초기화
