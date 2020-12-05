@@ -1,13 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
 import BlogPost from '../components/blogPost';
 import PostList from '../components/postList';
 
+import { Action, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { RootState } from '../reducers';
+
 interface EssayProps {
     
 }
+const Headline = styled.h1`
+    text-align : center;
+    font-size : 1.2rem;
+`;
 
 const Essay : React.FC<EssayProps> = () => {
     const tempProps = false;
@@ -24,11 +34,7 @@ const Essay : React.FC<EssayProps> = () => {
     <p>
         이렇게 말이다. 해드라인도 p태그 밖에 위치한다.
     </p>
-    <pre className="post-code">
-        <span>code : js</span><br/>
-        <code>const</code> foo = bar;<br />
-        <Fc>console.log(foo);</Fc>
-    </pre>
+    <pre className="post-code"><span>code : js</span><br/><code>const</code> foo = bar;<br /><fc>console.log(foo);</fc></pre>
     <p>
         코드는 pre로 감싸서 p태그 밖의 스타일링은 class를 통해서가 아니라 태그 자체로 스타일링 해야할거 같다.
     </p>`;
@@ -57,18 +63,25 @@ const Essay : React.FC<EssayProps> = () => {
         <Layout>
             <React.Fragment>
                 <section className="essay-tag">
-                    <h1>에세이 겸 일기</h1>
+                    <Headline>에세이</Headline>
                     <ListView />
                 </section>
                 <section className="essay-contents">
                     <EssayContents postList={[]} postData={tempPost}/>
-                    <p>
-                        아직 좋은 아이디어가 안떠오른다.
-                    </p>
                 </section>
             </React.Fragment>
         </Layout>
     );
 }
 
-export default Essay;
+const mapStateToProps = (state : RootState) => {
+    return {
+    };
+};
+
+const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
+    return {
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Essay);

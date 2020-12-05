@@ -1,13 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
 import BlogPost from '../components/blogPost';
 import PostList from '../components/postList';
 
+import { Action, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { RootState } from '../reducers';
+
 interface TechProps {
     
 }
+
+const Headline = styled.h1`
+    text-align : center;
+    font-size : 1.2rem;
+`;
 
 const Tech : React.FC<TechProps> = () => {
     const data = {
@@ -32,11 +43,7 @@ const Tech : React.FC<TechProps> = () => {
     <p>
         이렇게 말이다. 해드라인도 p태그 밖에 위치한다.
     </p>
-    <pre className="post-code">
-        <span>code : js</span><br/>
-        <code>const</code> foo = bar;<br />
-        <Fc>console.log(foo);</Fc>
-    </pre>
+    <pre className="post-code"><span>code : js</span><br/><code>const</code> foo = bar;<br /><fc>console.log(foo);</fc></pre>
     <p>
         코드는 pre로 감싸서 p태그 밖의 스타일링은 class를 통해서가 아니라 태그 자체로 스타일링 해야할거 같다.
     </p>`;
@@ -65,8 +72,7 @@ const Tech : React.FC<TechProps> = () => {
         <Layout>
             <React.Fragment>
                 <section className="tech-list">
-                    <h1>기술블로그</h1>
-                    <p>이전글 다음 글 같은 글목록</p>
+                    <Headline>기술 블로그</Headline>
                     <ListView />
                 </section>
                 <section className="tech-contents">
@@ -77,4 +83,14 @@ const Tech : React.FC<TechProps> = () => {
     );
 }
 
-export default Tech;
+const mapStateToProps = (state : RootState) => {
+    return {
+    };
+};
+
+const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
+    return {
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tech);

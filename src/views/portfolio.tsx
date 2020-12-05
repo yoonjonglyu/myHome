@@ -10,6 +10,7 @@ interface PortfolioProps {
 
 const Headline1 = styled.h1`
     text-align : center;
+    font-size : 1.2rem;
 `;
 const CategorySection = styled.section`
     margin : 0;
@@ -30,7 +31,7 @@ const Portfolio : React.FC<PortfolioProps> = () => {
         postTitle : "컨텐츠 리스트 임시 타이틀 길게 길게",
         postDescription : "낙원을 피어나는 되는 긴지라 피다. 바이며, 피가 이것이야말로 위하여 쓸쓸한 이것이다. 대고, 인간의 능히 있으랴? 두손을 이성은 용감하고 있는 끓는 보내는 사막이다. 찾아다녀도, 아름답고 찬미를 청춘의 이것이다. 동산에는 긴지라 대한 이상은 쓸쓸하랴? 곧 구하지 인간이 청춘의 얼마나 반짝이는 그들은 봄바람이다. 아니한 예가 같으며, 이것이다. 커다란 청춘 그림자는 이상 같이, 그들의 것이다."
     };
-    const temp = [data, data, data, data, data, data, data];
+    const temp = [data, data, data];
 
     return(
         <Layout>
