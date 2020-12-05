@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout';
 import Intro from '../components/intro';
 import ProfileTimeLine from '../components/profileTimeLine';
+import AboutTech from '../components/aboutTech';
 
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -18,6 +19,15 @@ interface MainProps {
 const QuickLink = styled(Link)`
     text-decoration : none;
     color : unset;
+`;
+const HeadLine = styled.h2`
+    text-align : center;
+    font-size : 1.5rem;
+`;
+const Description = styled.p`
+    text-align : center;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
 `;
 
 const Main : React.FC<MainProps> = (props) => {
@@ -36,16 +46,21 @@ const Main : React.FC<MainProps> = (props) => {
                 <Intro />
             </section>
             <section className="main-about">
-                <h2 style={{ textAlign : 'center'}}>연력</h2>
+                <HeadLine>개인 연력</HeadLine>
                 <QuickLink to="./about" title="더 알아보기" onClick={(e) => {handleTap(e, 1)}}>
                     <ProfileTimeLine />
                 </QuickLink>
             </section>
             <section className="main-skill">
-                <p>기술소개</p>
+                <HeadLine>기술 스택</HeadLine>
+                <Description>
+                    실무에서 실제로 사용해 봤거나 토이 프로젝트에서 활용 해본적 있는 것들<br />
+                    지금 당장 실무에 투입 되어서도 활용 가능한 수준의 기술 중 대표적인 것들입니다.
+                </Description>
+                <AboutTech />
             </section>
             <section className="main-portfolio">
-                <p>포트폴리오 간략히 소개</p>
+                <HeadLine>포트폴리오</HeadLine>
             </section>
             </React.Fragment>
         </Layout>
