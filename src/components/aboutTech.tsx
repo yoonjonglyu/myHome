@@ -49,35 +49,118 @@ const TechIcon = styled.img`
 `;
 
 const AboutTech: React.FC<AboutTechProps> = () => {
+    const frontEnd : Array<{key : string, value : string}> = [
+        {
+            key : "HTML",
+            value : HTML
+        },
+        {
+            key : "CSS",
+            value : CSS
+        },
+        {
+            key : "Javascript",
+            value : JS
+        },
+        {
+            key : "jQuery",
+            value : JQUERY
+        },
+        {
+            key : "WebPack",
+            value : WEBPACK
+        },
+        {
+            key : "React",
+            value : REACT
+        },
+        {
+            key : "Vue",
+            value : VUE
+        },
+        {
+            key : "TypeScript",
+            value : TS
+        }
+    ];
+    const backEnd : Array<{key : string, value : string}> = [
+        {
+            key : "Node.js",
+            value : NODE
+        },
+        {
+            key : "PHP",
+            value : PHP
+        },
+        {
+            key : "Socket.IO",
+            value : SOCKETIO
+        },
+        {
+            key : "MySQL",
+            value : MYSQL
+        },
+        {
+            key : "PostgreSQL",
+            value : POSTGRESQL
+        },
+    ];
+    const devOps : Array<{key : string, value : string}> = [
+        {
+            key : "Linux",
+            value : LINUX
+        },
+        {
+            key : "Docker",
+            value : DOCKER
+        },
+        {
+            key : "Apache",
+            value : APACHE
+        },
+        {
+            key : "Nginx",
+            value : NGINX
+        },
+        {
+            key : "GIT",
+            value : GIT
+        },
+        {
+            key : "AWS",
+            value : AWS
+        }
+    ]
+
+    const FrontTeck = frontEnd.map((data, index) => {
+        return (
+            <TechIcon key={index} src={data.value} alt={data.key} />
+        );
+    });
+    const BackTeck = backEnd.map((data, index) => {
+        return (
+            <TechIcon key={index} src={data.value} alt={data.key} />
+        );
+    });
+    const DevTeck = devOps.map((data, index) => {
+        return (
+            <TechIcon key={index} src={data.value} alt={data.key} />
+        );
+    });
+
     return (
         <div>
             <Headline><HeadLineIcon />프론트 엔드</Headline>
             <TechStack>
-                <TechIcon alt="HTML" src={HTML} />
-                <TechIcon alt="CSS" src={CSS} />
-                <TechIcon alt="Javascript" src={JS} />
-                <TechIcon alt="jQuery" src={JQUERY} />
-                <TechIcon alt="WebPack" src={WEBPACK} />
-                <TechIcon alt="React" src={REACT} />
-                <TechIcon alt="Vue" src={VUE} />
-                <TechIcon alt="TypeScript" src={TS} />
+                {FrontTeck}
             </TechStack>
             <Headline><HeadLineIcon />벡 엔드</Headline>
             <TechStack>
-                <TechIcon alt="Node.js" src={NODE} />
-                <TechIcon alt="Php" src={PHP} />
-                <TechIcon alt="Socket.io" src={SOCKETIO} />
-                <TechIcon alt="Mysql" src={MYSQL} />
-                <TechIcon alt="PostgreSql" src={POSTGRESQL} />
+                {BackTeck}
             </TechStack>
             <Headline><HeadLineIcon />데브 옵스</Headline>
             <TechStack>
-                <TechIcon alt="Linux" src={LINUX} />
-                <TechIcon alt="docker" src={DOCKER} />
-                <TechIcon alt="Apache" src={APACHE} />
-                <TechIcon alt="Nginx" src={NGINX} />
-                <TechIcon alt="Git" src={GIT} />
-                <TechIcon alt="Aws" src={AWS} />
+                {DevTeck}
             </TechStack>
         </div>
     );
