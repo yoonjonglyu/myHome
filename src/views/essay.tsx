@@ -20,9 +20,8 @@ const Headline = styled.h1`
 `;
 
 const Essay : React.FC<EssayProps> = () => {
-    const tempProps = false;
-
-    const EssayContents =  tempProps ? PostList : BlogPost;
+    const isPost = location.hash.split('?')[1];
+    const EssayContents =  !isPost ? PostList : BlogPost;
     const tempContents = `
     <h3>소제목은 h3로</h3>
     <p>
@@ -67,7 +66,7 @@ const Essay : React.FC<EssayProps> = () => {
                     <ListView />
                 </section>
                 <section className="essay-contents">
-                    <EssayContents postList={[]} postData={tempPost}/>
+                    <EssayContents postData={tempPost}/>
                 </section>
             </React.Fragment>
         </Layout>
