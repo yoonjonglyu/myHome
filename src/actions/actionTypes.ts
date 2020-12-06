@@ -1,2 +1,3 @@
-export const TAP_INDEX : String = "tapIndex";
-export const TAG_LIST : String = "tagList";
+export const TAP_INDEX : string = "tapIndex";
+export const TAG_LIST : string = "tagList";
+export const POST_LIST : string = "postList";
