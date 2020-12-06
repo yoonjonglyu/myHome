@@ -2,12 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { Action, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { RootState } from '../reducers';
+
 interface PostProps {
     postIdx : number
     postDate : string
     postAuthor : string 
     postTitle : string 
     postDescription : string
+    postTags : Array<{key : number, label : string}>    
 }
 
 interface PostListProps {
@@ -60,5 +66,15 @@ const PostList: React.FC<PostListProps> = (props) => {
     );
 };
 
+const mapStateToProps = ({ PostList } : RootState) => {
+    return {
+        postList : PostList.PostList
+    };
+};
 
-export default PostList;
+const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
+    return {
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList);
