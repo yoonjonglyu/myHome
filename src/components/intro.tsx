@@ -24,28 +24,39 @@ const IntroBox = styled.div`
     background-image : url('${BackGroundIMG}');
     background-size : cover;
 `;
+
 const Headline = styled.h1<{isEnd : boolean}>`
     display : inline-block;
     margin : 90px 0 20px 0;
     font-size : ${props => props.isEnd ? "2.5rem" : "2rem"};
     line-height : 2rem;
     color : #eaeaea;
-    animation : ${props => props.isEnd ? "none" : Cursor} 0.5s step-end infinite;
+    &:after {
+        content : '';
+        animation : ${props => props.isEnd ? 'none' : Cursor } 0.5s step-end infinite;
+    }
 `;
-const AboutHead = styled.span<{isEnd : boolean}>`
+const AboutHead = styled.span<{isStart : boolean, isEnd : boolean}>`
     display : inline-block;
     margin : 20px 8px;
     font-size : 1.3rem;
     line-height : 1.6rem;
     color : #08d9d6;
-    animation : ${props => props.isEnd ? StarLight : Cursor} 0.5s step-end infinite;
+    animation : ${props => props.isEnd ? StarLight : 'none'} 0.5s step-end infinite;
+    &:after {
+        content : '';
+        animation : ${props => (props.isStart && props.isEnd === false) ? Cursor : 'none'} 0.5s step-end infinite;
+    }
 `;
-const IntroText = styled.span`
+const IntroText = styled.span<{isStart : boolean}>`
     display : inline-block;
     font-size : 1.2rem;
     line-height : 1.5rem;
     color : #ff2e63;
-    animation : ${Cursor} 0.5s step-end infinite;
+    &:after {
+        content : '';
+        animation : ${props => props.isStart ? Cursor : 'none'} 0.5s step-end infinite;
+    }
 `;
 
 const Intro: React.FC<IntroProps> = () => {
@@ -117,15 +128,15 @@ const Intro: React.FC<IntroProps> = () => {
     return (
         <IntroBox>
             <Headline className="intro-hello" isEnd={headAvail}>
-                {headline}
+                {headline}<span></span>
             </Headline>
             <p>
-                <AboutHead isEnd={aboutAvail}>
+                <AboutHead isStart={headAvail} isEnd={aboutAvail}>
                     {about}
                 </AboutHead>
             </p>
             <p>
-                <IntroText>
+                <IntroText isStart={aboutAvail}>
                     {intro}
                 </IntroText>
             </p>
