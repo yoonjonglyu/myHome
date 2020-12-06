@@ -37,6 +37,7 @@ const Main : React.FC<MainProps> = (props) => {
 
     const handleTap = (e : any, value : number) => {
         handleTapIndex(value);
+        window.scrollTo(0, 0);
     }
 
     return(
