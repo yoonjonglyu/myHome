@@ -9,9 +9,10 @@ interface ListItemProps {
 const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        overflow: 'hidden'
+        textAlign: "center",
+        fontSize : "0.8rem",
+        color: "#364f6b",
+        overflow: "hidden"
     },
 }));
 
