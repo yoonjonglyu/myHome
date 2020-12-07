@@ -34,6 +34,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     const handleTap = (e : any, value : number) => {
         setValue(value);
         handleTapIndex(value);
+        window.scrollTo(0, 0);
     }
     useEffect(() => {
         if(tapIndex === false){
