@@ -16,7 +16,7 @@ import styled from 'styled-components';
 interface ProfileTimeLineProps {
 }
 
-const FadeTimeLineItem = styled(TimelineItem)`
+const FadeTimeLine = styled(Timeline)`
   @keyframes fadeup {
     0% {
       opacity : 0;
@@ -46,8 +46,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
   const classes = useStyles();
 
   return (
-    <Timeline align="alternate" className={classes.root}>
-      <FadeTimeLineItem>
+    <FadeTimeLine align="alternate" className={classes.root}>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             1995년 05월 24일
@@ -71,8 +71,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
               </Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-      <FadeTimeLineItem>
+      </TimelineItem>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             초등학생 4학년 시절
@@ -94,8 +94,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
               </Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-      <FadeTimeLineItem>
+      </TimelineItem>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             2015년
@@ -121,8 +121,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
               </Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-      <FadeTimeLineItem>
+      </TimelineItem>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             2017년
@@ -144,8 +144,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
               <small>登峰造極(등봉조극): 산에 올라 정상에 도달한다는 뜻으로, 학문이나 기술이 심오한 경지에 도달함을 비유하여 이르는 말.</small></Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-      <FadeTimeLineItem>
+      </TimelineItem>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             2019년
@@ -172,8 +172,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
               </Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-      <FadeTimeLineItem>
+      </TimelineItem>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             2020년
@@ -201,8 +201,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
             </Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-      <FadeTimeLineItem>
+      </TimelineItem>
+      <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             미래
@@ -228,8 +228,8 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
               </Typography>
           </Paper>
         </TimelineContent>
-      </FadeTimeLineItem>
-    </Timeline>
+      </TimelineItem>
+    </FadeTimeLine>
   );
 };
 
