@@ -17,6 +17,7 @@ interface ProfileTimeLineProps {
 }
 
 const FadeTimeLine = styled(Timeline)`
+  font-size : 0.9rem;
   @keyframes fadeup {
     0% {
       opacity : 0;
@@ -31,9 +32,6 @@ const FadeTimeLine = styled(Timeline)`
 `;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    fontSize: '0.9rem'
-  },
   paper: {
     padding: '6px 16px',
   },
@@ -46,7 +44,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
   const classes = useStyles();
 
   return (
-    <FadeTimeLine align="alternate" className={classes.root}>
+    <FadeTimeLine align="alternate">
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
