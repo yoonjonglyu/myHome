@@ -6,14 +6,14 @@ import RootSaga from './sagas';
 
 const ConfigureStore = () => {
     const sagaMiddleware = createSagaMiddleware();
-
+    
     const store = createStore(
             RootReducers,
             applyMiddleware(
                 sagaMiddleware
             )
         );
-
+        
     sagaMiddleware.run(RootSaga);
 
     return store;
