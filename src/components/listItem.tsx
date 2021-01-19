@@ -23,6 +23,7 @@ const ListItem: React.FC<ListItemProps> = (props) => {
     } = props;
 
     interface ItemsProps {
+        idx : number
         name: string
     };
 
