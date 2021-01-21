@@ -12,6 +12,16 @@ class BlogApi {
             this._REST_API_URL + "tags"
         );
     };
+    getPostList = (type : string) => {
+        return axios.get(
+            `${this._REST_API_URL}${type}`
+        );
+    };
+    getPostContents = (type : string, idx : string) => {
+        return axios.get(
+            `${this._REST_API_URL}${type}/${idx}`
+        );
+    };
 }
 
 export default new BlogApi();
