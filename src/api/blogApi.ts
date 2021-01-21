@@ -19,7 +19,7 @@ class BlogApi {
     };
     getPostContents = (type : string, idx : string) => {
         return axios.get(
-            `${this._REST_API_URL}${type}/${idx}`
+            `${this._REST_API_URL}${type}?idx=${idx}`
         );
     };
 }
