@@ -1,10 +1,14 @@
 import { all } from 'redux-saga/effects';
 import getAllTags from './post/getAllTags';
+import getPostList from './post/getPostList';
+import getPostContents from './post/getPostContents';
 
 
 function* RootSaga() {
     yield all([
-        getAllTags()
+        getAllTags(),
+        getPostList("essay"),
+        getPostContents("essay", 1)
     ]);
 };
 
