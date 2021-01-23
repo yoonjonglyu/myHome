@@ -17,7 +17,7 @@ class BlogApi {
             `${this._REST_API_URL}${type}`
         );
     };
-    getPostContents = (type : string, idx : string) => {
+    getPostContents = (type : string, idx : number) => {
         return axios.get(
             `${this._REST_API_URL}${type}?idx=${idx}`
         );
