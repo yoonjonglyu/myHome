@@ -7,7 +7,7 @@ import getPostContents from './post/getPostContents';
 function* RootSaga() {
     yield all([
         getAllTags(),
-        getPostList("essay"),
+        getPostList(),
         getPostContents("essay", 1)
     ]);
 };

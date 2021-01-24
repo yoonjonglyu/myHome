@@ -2,13 +2,31 @@ import { put, call} from 'redux-saga/effects';
 import api from '../../api/blogApi';
 import * as actions from '../../actions';
 
-function* getPostList (type : string) {
+function* getList (type : string) {
     try {
         const { data } = yield call(api.getPostList, type);
-        console.log(data)
-        yield put(actions.POSTLIST(data));
-    } catch(error) {
+        return data;
+    } catch (error) {
+    }
+}
+function* getPostList () {
+    try {
+        const postList = {
+            essay : [],
+            tech : [],
+            portfolio : []
+        };
+        const essayList = yield getList("essay");
 
+        postList.essay = essayList;
+        const techList = yield getList("tech");
+        
+        postList.tech = techList;
+
+        const portfolioList = yield getList("portfolio");
+        postList.portfolio = portfolioList;
+        yield put(actions.POSTLIST(postList.essay));
+    } catch (error) {
     }
 }
 
