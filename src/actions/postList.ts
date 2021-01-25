@@ -6,7 +6,7 @@ interface PostProps {
     postAuthor : string 
     postTitle : string 
     postDescription : string
-    postTags : Array<{key : number, label : string}>    
+    postTags : Array<{idx : number, name : string}>    
 }
 
 export const POSTLIST = (list : Array<PostProps>) => {
