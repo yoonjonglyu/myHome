@@ -18,13 +18,14 @@ function* getPostList () {
         };
         const essayList = yield getList("essay");
 
-        postList.essay = essayList;
+        postList.essay = essayList.essay;
         const techList = yield getList("tech");
         
-        postList.tech = techList;
+        postList.tech = techList.tech;
 
         const portfolioList = yield getList("portfolio");
-        postList.portfolio = portfolioList;
+        postList.portfolio = portfolioList.tech;
+        
         yield put(actions.POSTLIST(postList.essay));
     } catch (error) {
     }
