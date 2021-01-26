@@ -3,9 +3,10 @@ import { combineReducers } from 'redux';
 import Taps from './tap';
 import TagList from './tag';
 import PostList from './post';
+import BlogPost from './blogPost';
 
 const RootReducers = combineReducers({
-    Taps, TagList, PostList
+    Taps, TagList, PostList, BlogPost
 });
 
 export default RootReducers;
