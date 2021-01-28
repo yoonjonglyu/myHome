@@ -22,7 +22,7 @@ const initialState : BlogPostState = {
     } 
 }
 const BlogPost : Reducer<BlogPostState, actions.BlogPostActions> = (state = initialState, action) => {
-    if(action.type === types.POST_LIST){
+    if(action.type === types.POST_CONTENTS){
         return {
             ...state,
             BlogPost : action.payload
