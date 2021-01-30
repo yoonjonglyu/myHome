@@ -3,6 +3,10 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import TagList from './tagList';
 
+import { Action, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { RootState } from '../reducers';
 
 interface PostProps {
     postTitle : string
@@ -74,7 +78,7 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
         postContent,
         postTags
     } = postData;
-
+    
     const Disqus = (disqus_title: string, disqus_url: string) => {
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -131,4 +135,15 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
     );
 };
 
-export default BlogPostProps;
+const mapStateToProps = ({ BlogPost }: RootState) => {
+    return {
+        postData : BlogPost.BlogPost
+    };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
+    return {
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogPostProps);
