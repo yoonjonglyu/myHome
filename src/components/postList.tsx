@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -13,11 +13,12 @@ interface PostProps {
     postAuthor : string 
     postTitle : string 
     postDescription : string
-    postTags : Array<{key : number, label : string}>    
+    postTags : Array<{idx : number, name : string}>    
 }
 
 interface PostListProps {
     postList : Array<PostProps>
+    getPostList : Function
 }
 
 const ContentsItem = styled.div`
@@ -42,9 +43,13 @@ const SubText = styled.p`
 
 const PostList: React.FC<PostListProps> = (props) => {
     const {
-        postList
+        postList,
+        getPostList
     } = props;
 
+    useEffect(() => {
+        getPostList();
+    }, []);
     const List = postList.length > 0 ? postList.map((post, key) => {
         return (
             <ContentsItem key={key}>
@@ -74,6 +79,7 @@ const mapStateToProps = ({ PostList } : RootState) => {
 
 const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
     return {
+        getPostList : () => {dispatch(actions.LOADPOSTLIST())}
     };
 }
 
