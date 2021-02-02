@@ -13,7 +13,7 @@ interface PostProps {
     postDate : string
     postAuthor : string
     postContent : string
-    postTags : Array<{key : number, label : string}>
+    postTags : Array<{idx : number, name : string}>
 }
 interface BlogPostProps {
     postData : PostProps
