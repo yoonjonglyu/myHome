@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Chip, Paper } from '@material-ui/core';
 
 interface TagProps {
-  key: number
-  label: string
+  idx: number
+  name: string
 }
 
 interface TagListProps {
@@ -39,13 +39,13 @@ const TagList: React.FC<TagListProps> = (props) => {
     taglist
   } = props;
   const [chipData, setChipData] = useState(taglist);
-
+  
   const TagItems = chipData.map((data) => {
     return (
-      <li key={data.key}>
+      <li key={data.idx}>
         <Chip
-          to={`?tags=${data.key}`}
-          label={data.label}
+          to={`?tags=${data.idx}`}
+          label={data.name}
           className={classes.chip}
           component={Link}
         />
