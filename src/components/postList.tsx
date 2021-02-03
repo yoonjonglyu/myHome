@@ -19,6 +19,7 @@ interface PostProps {
 interface PostListProps {
     postList : Array<PostProps>
     getPostList : Function
+    tapIndex : number
 }
 
 const ContentsItem = styled.div`
@@ -44,12 +45,26 @@ const SubText = styled.p`
 const PostList: React.FC<PostListProps> = (props) => {
     const {
         postList,
-        getPostList
+        getPostList,
+        tapIndex
     } = props;
 
     useEffect(() => {
-        getPostList();
-    }, []);
+        switch(tapIndex){
+            case 2:
+                getPostList("essay");
+                break;
+            case 3:
+                getPostList("tech");
+                break;
+            case 4:
+                getPostList("portfolio");
+                break;
+            default:
+                break;
+        }
+    }, [tapIndex]);
+
     const List = postList.length > 0 ? postList.map((post, key) => {
         return (
             <ContentsItem key={key}>
@@ -71,15 +86,16 @@ const PostList: React.FC<PostListProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ PostList } : RootState) => {
+const mapStateToProps = ({ PostList, Taps } : RootState) => {
     return {
-        postList : PostList.PostList
+        postList : PostList.PostList,
+        tapIndex : Taps.tapIndex
     };
 };
 
 const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
     return {
-        getPostList : () => {dispatch(actions.LOADPOSTLIST())}
+        getPostList : (type : string) => {dispatch(actions.LOADPOSTLIST(type))}
     };
 }
 
