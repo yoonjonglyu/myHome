@@ -1,8 +1,9 @@
 import * as types from './actionTypes';
 
-export const LOADPOSTLIST = () => {
+export const LOADPOSTLIST = (type : string) => {
     return {
-        type : types.LOAD_POST_LIST
+        type : types.LOAD_POST_LIST,
+        payload : type
     };
 };
 
