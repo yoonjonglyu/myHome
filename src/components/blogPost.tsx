@@ -1,4 +1,4 @@
-import React, { createElement, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import TagList from './tagList';
@@ -17,7 +17,9 @@ interface PostProps {
 }
 interface BlogPostProps {
     postData : PostProps
-}
+    getPostData : Function
+    tapIndex : number
+}    
 
 const BlogPostStyle = createGlobalStyle`
     h3 {
@@ -69,7 +71,9 @@ const PostAuthor = styled.strong`
 
 const BlogPostProps: React.FC<BlogPostProps> = (props) => {
     const {
-        postData
+        postData,
+        getPostData,
+        tapIndex
     } = props;
     const {
         postTitle,
@@ -107,8 +111,24 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
     };
 
     useEffect(() => {
-        Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/').slice(1).join('\/')}`);
-    }, []);
+        const locationState = location.hash.split('?')[1].split('=');
+        if(locationState[0] === "post"){
+            switch(tapIndex){
+                case 2:
+                    getPostData("essay", locationState[1]);
+                    break;
+                case 3:
+                    getPostData("tech", locationState[1]);
+                    break;
+                case 4:
+                    getPostData("portfolio", locationState[1]);
+                    break;
+                default:
+                    break;
+            }
+            Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/').slice(1).join('\/')}`);
+        }
+    }, [tapIndex]);
 
     return (
         <React.Fragment>
@@ -135,14 +155,16 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ BlogPost }: RootState) => {
+const mapStateToProps = ({ BlogPost, Taps }: RootState) => {
     return {
-        postData : BlogPost.BlogPost
+        postData : BlogPost.BlogPost,
+        tapIndex : Taps.tapIndex
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
     return {
+        getPostData : (type : string, idx : string) => {dispatch(actions.LOADPOSTCONTENTS(type , idx))}
     };
 }
 
