@@ -10,7 +10,7 @@ function* RootSaga() {
     yield all([
         getAllTags(),
         takeEvery(actionType.LOAD_POST_LIST, getPostList),
-        getPostContents("essay", 1)
+        takeEvery(actionType.LOAD_POST_CONTENTS, getPostContents)
     ]);
 };
 
