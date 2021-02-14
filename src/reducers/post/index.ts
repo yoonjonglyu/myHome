@@ -9,7 +9,7 @@ interface PostListState {
         postAuthor : string 
         postTitle : string 
         postDescription : string
-        postTags : Array<{key : number, label : string}>     
+        postTags : Array<{idx : number, name : string}>     
     }>
 }
 
@@ -21,12 +21,12 @@ const tempData = {
     postDescription : "진정한 게으름은 미래까지 고려해서 불필요한 귀찮음이 발생하지 않게 하는 것이다.",
     postTags : [
         {
-            key : 1,
-            label : "HTML"
+            idx : 1,
+            name : "HTML"
         },
         {
-            key : 2,
-            label : "CSS"
+            idx : 2,
+            name : "CSS"
         }
     ]
 }
