@@ -38,9 +38,9 @@ const Header: React.FC<HeaderProps> = (props) => {
     }
     useEffect(() => {
         if(tapIndex === false){
-            const state : Array<string> = location.hash.split('\/');
-        
-            switch(state[1]){
+            const state : string = location.hash.split('\/')[1]?.split("?")[0];
+
+            switch(state){
                 case '':
                     setValue(0);
                     handleTapIndex(0);
