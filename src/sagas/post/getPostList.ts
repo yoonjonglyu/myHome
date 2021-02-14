@@ -7,7 +7,7 @@ function* getPostList(action : {type : string , payload : string}) {
         const { data } = yield call(api.getPostList, action.payload);
         yield put(actions.POSTLIST(data[action.payload]));
     } catch (error) {
-
+        console.error("API 서버에서 데이터를 불러오는데 실패했습니다.");
     }
 }
 
