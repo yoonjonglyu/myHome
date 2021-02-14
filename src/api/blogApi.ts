@@ -22,6 +22,11 @@ class BlogApi {
             `${this._REST_API_URL}${type}?idx=${idx}`
         );
     };
+    getTagPostList = (type : string, idx : string) => {
+        return axios.get(
+            `${this._REST_API_URL}taglist?type=${type}&idx=${idx}`
+        );
+    };
 }
 
 export default new BlogApi();
