@@ -6,7 +6,9 @@ function* getPostContents (action : {type : string, payload : {type : string, id
     try {
         const { data } = yield call(api.getPostContents, action.payload.type, action.payload.idx);
         const responsePost = data[action.payload.type];
-        yield put(actions.POSTCONTENTS(responsePost));
+        if(JSON.stringify(responsePost) !== "{}"){
+            yield put(actions.POSTCONTENTS(responsePost));
+        }
     } catch (error) {
         console.error("API 서버에서 데이터를 불러오는데 실패했습니다.");
     }
