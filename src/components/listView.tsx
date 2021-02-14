@@ -6,16 +6,19 @@ import ListItem from './listItem';
 
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { RootState } from '../reducers';
 
 interface ListViewProps {
-    data: {
-        essay: Array<any>
-        tech: Array<any>
-        portfolio: Array<any>
+    tagList: {
+        essay: Array<TagProps>
+        tech: Array<TagProps>
+        portfolio: Array<TagProps>
     }
     tapIndex: number | false
+}
+interface TagProps {
+    idx : number
+    name : string
 }
 
 const useStyles = makeStyles(() => ({
@@ -27,38 +30,35 @@ const useStyles = makeStyles(() => ({
 const ListView: React.FC<ListViewProps> = (props) => {
     const classes = useStyles();
     const {
-        data,
+        tagList,
         tapIndex
     } = props;
-    const [tagList, setTagList]: Array<any> = useState([]);
+    const [tags, setTags]: Array<any> = useState([]);
 
     useEffect(() => {
         let state: object;
         switch (tapIndex) {
             case 2:
-                state = data.essay;
+                state = tagList.essay;
                 break;
             case 3:
-                state = data.tech;
+                state = tagList.tech;
                 break;
             case 4:
-                state = data.portfolio;
+                state = tagList.portfolio;
                 break;
             default:
                 state = [];
                 break;
         }
-        setTagList(state);
-    }, [ tapIndex ]);
+        setTags(state);
+    }, [tapIndex]);
 
-
-    const ListRow = tagList.map((items: Array<any>, key: number) => {
-        return (
-            <Grid container item xs={12} spacing={1} key={key}>
-                <ListItem children={items} />
-            </Grid>
-        );
-    })
+    const ListRow = (
+        <Grid container item xs={12} spacing={1}>
+            <ListItem children={tags} />
+        </Grid>
+    );
 
     return (
         <Grid container spacing={1} component="nav" className={classes.root}>
@@ -69,7 +69,7 @@ const ListView: React.FC<ListViewProps> = (props) => {
 
 const mapStateToProps = ({ TagList, Taps }: RootState) => {
     return {
-        data: TagList.tagList,
+        tagList: TagList.tagList,
         tapIndex: Taps.tapIndex
     };
 };
