@@ -52,7 +52,7 @@ const ListView: React.FC<ListViewProps> = (props) => {
                 break;
         }
         setTags(state);
-    }, [tapIndex]);
+    }, [tapIndex, tagList]);
 
     const ListRow = (
         <Grid container item xs={12} spacing={1}>
