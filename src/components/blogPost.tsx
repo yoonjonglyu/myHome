@@ -82,7 +82,6 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
         postContent,
         postTags
     } = postData;
-    
     const Disqus = (disqus_title: string, disqus_url: string) => {
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -130,7 +129,7 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
         }
     }, [tapIndex]);
 
-    return (
+    const blogPost = postData.postTitle !== "블로그 글 타이틀" ? (
         <React.Fragment>
             <BlogPostStyle />
             <header className="post-header">
@@ -152,7 +151,20 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
             </div>
             <script id="dsq-count-scr" src="//https-yoonjonglyu-github-io-myhome.disqus.com/count.js" async></script>
         </React.Fragment>
+    ) : (
+        <React.Fragment>
+        <BlogPostStyle />
+        <header className="post-header">
+            <PostTitle className="post-title">삭제된 글입니다.</PostTitle>
+        </header>
+        <div className="post-comments">
+            <div id="disqus_thread"></div>
+        </div>
+        <script id="dsq-count-scr" src="//https-yoonjonglyu-github-io-myhome.disqus.com/count.js" async></script>
+    </React.Fragment>
     );
+
+    return blogPost;
 };
 
 const mapStateToProps = ({ BlogPost, Taps }: RootState) => {
