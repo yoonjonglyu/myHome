@@ -9,8 +9,9 @@ import { RootState } from '../reducers';
 
 interface PostListProps {
     postList : Array<PostProps>
-    getPostList : Function
     tapIndex : number | false
+    getPostList : Function
+    getTagPostList : Function
 }
 interface PostProps {
     postIdx : number
@@ -44,25 +45,28 @@ const SubText = styled.p`
 const PostList: React.FC<PostListProps> = (props) => {
     const {
         postList,
+        tapIndex,
         getPostList,
-        tapIndex
+        getTagPostList,
     } = props;
-
+    const test = location.hash;
     useEffect(() => {
+        const isTag = location.hash.split("?")[1]?.split("=");
+
         switch(tapIndex){
             case 2:
-                getPostList("essay");
+                isTag?.[0] === "tags" ? getTagPostList("essay", isTag[1]) : getPostList("essay");
                 break;
             case 3:
-                getPostList("tech");
+                isTag?.[0] === "tags" ? getTagPostList("tech", isTag[1]) : getPostList("tech");
                 break;
             case 4:
-                getPostList("portfolio");
+                isTag?.[0] === "tags" ? getTagPostList("portfolio", isTag[1]) : getPostList("portfolio");
                 break;
             default:
                 break;
         }
-    }, [tapIndex]);
+    }, [tapIndex, test]);
 
     const List = postList.length > 0 ? postList.map((post, key) => {
         return (
@@ -94,7 +98,8 @@ const mapStateToProps = ({ PostList, Taps } : RootState) => {
 
 const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
     return {
-        getPostList : (type : string) => {dispatch(actions.LOADPOSTLIST(type))}
+        getPostList : (type : string) => {dispatch(actions.LOADPOSTLIST(type))},
+        getTagPostList : (type : string, idx : string) => {dispatch(actions.LOADTAGPOSTLIST(type, idx))},
     };
 }
 
