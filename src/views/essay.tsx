@@ -16,7 +16,7 @@ const Headline = styled.h1`
 
 const Essay : React.FC<EssayProps> = () => {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
-    const EssayContents = isPost === undefined  ? PostList : BlogPost;
+    const EssayContents = isPost === "post"  ? BlogPost : PostList;
     return(
         <Layout>
             <React.Fragment>

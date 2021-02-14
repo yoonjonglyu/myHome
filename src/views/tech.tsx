@@ -17,7 +17,7 @@ const Headline = styled.h1`
 
 const Tech : React.FC<TechProps> = () => {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
-    const TechContents = isPost === undefined ? PostList : BlogPost;
+    const TechContents = isPost === "post" ? BlogPost : PostList;
 
     return(
         <Layout>
