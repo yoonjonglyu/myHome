@@ -7,6 +7,11 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { RootState } from '../reducers';
 
+interface PostListProps {
+    postList : Array<PostProps>
+    getPostList : Function
+    tapIndex : number | false
+}
 interface PostProps {
     postIdx : number
     postDate : string
@@ -14,12 +19,6 @@ interface PostProps {
     postTitle : string 
     postDescription : string
     postTags : Array<{idx : number, name : string}>    
-}
-
-interface PostListProps {
-    postList : Array<PostProps>
-    getPostList : Function
-    tapIndex : number
 }
 
 const ContentsItem = styled.div`
