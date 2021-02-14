@@ -7,3 +7,4 @@ export {LOADPOSTLIST, LoadPostActions} from './loadPostList';
 export {POSTLIST, PostActions} from './postList';
 export {LOADPOSTCONTENTS, LoadBlogPostActions} from './loadPostContents';
 export {POSTCONTENTS, BlogPostActions} from './postContents';
+export {LOADTAGPOSTLIST, LoadTagPostActions} from './loadTagPostList';
