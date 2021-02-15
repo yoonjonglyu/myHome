@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -49,10 +49,10 @@ const PostList: React.FC<PostListProps> = (props) => {
         getPostList,
         getTagPostList,
     } = props;
-    const test = location.hash;
+    const [tag, setTag] = useState(location.hash.split("?")[1]?.split("=")[1]);
+    
     useEffect(() => {
         const isTag = location.hash.split("?")[1]?.split("=");
-
         switch(tapIndex){
             case 2:
                 isTag?.[0] === "tags" ? getTagPostList("essay", isTag[1]) : getPostList("essay");
@@ -66,7 +66,15 @@ const PostList: React.FC<PostListProps> = (props) => {
             default:
                 break;
         }
-    }, [tapIndex, test]);
+
+        const watchTag = setInterval(() => { // 커스텀 훅으로 모두 묶어서 각 이벤트마다 해당 훅을 실행시킨다면 이렇게 인터벌 할 필요도 없겠지
+            if(tag !== location.hash.split("?")[1]?.split("=")[1]){
+                setTag(location.hash.split("?")[1]?.split("=")[1]);
+            }
+        });
+
+        return () => {clearInterval(watchTag)};
+    }, [tapIndex, tag]);
 
     const List = postList.length > 0 ? postList.map((post, key) => {
         return (
