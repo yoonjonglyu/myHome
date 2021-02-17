@@ -11,11 +11,27 @@ import {
 } from '@material-ui/lab';
 import { Cake, Flight, Work, SupervisedUserCircle, Search } from '@material-ui/icons';
 import { Paper, Typography } from '@material-ui/core';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 interface ProfileTimeLineProps {
 }
 
+const MobileTimeLine = createGlobalStyle`
+  @media screen and (max-width: 768px) {
+      .MuiTimeline-root {
+        padding: 0;
+      }
+      .MuiTimelineSeparator-root {
+        display: none;
+      }
+      .MuiTimelineOppositeContent-root {
+        display: none;
+      }
+      .MuiTimelineItem-alignAlternate:nth-child(even) .MuiTimelineItem-content {
+        text-align : left;
+      }
+  }
+`;
 const FadeTimeLine = styled(Timeline)`
   font-size : 0.9rem;
   @keyframes fadeup {
@@ -45,6 +61,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
 
   return (
     <FadeTimeLine align="alternate">
+      <MobileTimeLine />
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
