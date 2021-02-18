@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, HashRouter as Router, Route } from 'react-router-dom';
 
-import Main from './views/main';
-import About from './views/about';
-import Portfolio from './views/portfolio';
-import Tech from './views/tech';
-import Essay from './views/essay';
-import NotFound from './views/notFound';
+const Main = lazy(() => import('./views/main'));
+const About = lazy(() => import('./views/about'));
+const Portfolio = lazy(() => import('./views/portfolio'));
+const Tech = lazy(() => import('./views/tech'));
+const Essay = lazy(() => import('./views/essay'));
+const NotFound = lazy(() => import('./views/notFound'));
+const loading = () => (<h1>LOADING</h1>);
 
 const App: React.FC = () => {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={Main} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/portfolio" component={Portfolio} />
-                <Route exact path="/tech" component={Tech} />
-                <Route exact path="/essay" component={Essay} />
-                <Route exact component={NotFound} />
+                <Suspense fallback={loading()}>
+                    <Route exact path="/" component={Main} />
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/portfolio" component={Portfolio} />
+                    <Route exact path="/tech" component={Tech} />
+                    <Route exact path="/essay" component={Essay} />
+                    <Route exact component={NotFound} />
+                </Suspense>
             </Switch>
         </Router>
     );
