@@ -43,7 +43,6 @@ const config = {
             cacheGroups : {
                 vendor : {
                     chunks : 'initial',
-                    test : 'vendor',
                     name : 'vendor',
                     enforce : true
                 }
