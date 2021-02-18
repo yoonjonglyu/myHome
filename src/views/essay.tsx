@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
-import BlogPost from '../components/blogPost';
-import PostList from '../components/postList';
+const BlogPost = lazy(() => import('../components/blogPost'));
+const PostList = lazy(() => import('../components/postList'));
 
 interface EssayProps {
-    
+
 }
 const Headline = styled.h1`
     text-align : center;
     font-size : 1.2rem;
 `;
 
-const Essay : React.FC<EssayProps> = () => {
+const Essay: React.FC<EssayProps> = () => {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
-    const EssayContents = isPost === "post"  ? BlogPost : PostList;
-    return(
+    const EssayContents = isPost === "post" ? BlogPost : PostList;
+    return (
         <Layout>
             <React.Fragment>
                 <section className="essay-tag">
@@ -25,7 +25,9 @@ const Essay : React.FC<EssayProps> = () => {
                     <ListView />
                 </section>
                 <section className="essay-contents">
-                    <EssayContents />
+                    <Suspense fallback="">
+                        <EssayContents />
+                    </Suspense>
                 </section>
             </React.Fragment>
         </Layout>

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
-import BlogPost from '../components/blogPost';
-import PostList from '../components/postList';
+const BlogPost = lazy(() => import('../components/blogPost'));
+const PostList = lazy(() => import('../components/postList'));
 
 interface TechProps {
-    
+
 }
 
 const Headline = styled.h1`
@@ -15,11 +15,11 @@ const Headline = styled.h1`
     font-size : 1.2rem;
 `;
 
-const Tech : React.FC<TechProps> = () => {
+const Tech: React.FC<TechProps> = () => {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
     const TechContents = isPost === "post" ? BlogPost : PostList;
 
-    return(
+    return (
         <Layout>
             <React.Fragment>
                 <section className="tech-list">
@@ -27,7 +27,9 @@ const Tech : React.FC<TechProps> = () => {
                     <ListView />
                 </section>
                 <section className="tech-contents">
-                    <TechContents />
+                    <Suspense fallback="">
+                        <TechContents />
+                    </Suspense>
                 </section>
             </React.Fragment>
         </Layout>
