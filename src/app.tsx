@@ -6,7 +6,7 @@ const About = lazy(() => import('./views/about'));
 const Portfolio = lazy(() => import('./views/portfolio'));
 const Tech = lazy(() => import('./views/tech'));
 const Essay = lazy(() => import('./views/essay'));
-import NotFound from './views/notFound';
+const NotFound = lazy(() => import('./views/notFound'));
 import Loading from './components/loading';
 
 const App: React.FC = () => {
