@@ -22,13 +22,13 @@ const MobileTimeLine = createGlobalStyle`
         padding: 0;
       }
       .MuiTimelineSeparator-root {
-        display: none;
+        display: none !IMPORTANT;
       }
       .MuiTimelineOppositeContent-root {
-        display: none;
+        display: none !IMPORTANT;
       }
       .MuiTimelineItem-alignAlternate:nth-child(even) .MuiTimelineItem-content {
-        text-align : left;
+        text-align : left !IMPORTANT;
       }
   }
 `;
