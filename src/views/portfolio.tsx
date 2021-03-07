@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ListView from '../components/listView';
-import PostList from '../components/postList';
+import PortfolioList from '../components/portfolioList';
 
 interface PortfolioProps {
 }
@@ -32,7 +32,7 @@ const Portfolio : React.FC<PortfolioProps> = () => {
                     <ListView />
                 </CategorySection>
                 <ContentsSection className="portfolio-contents">
-                    <PostList />
+                    <PortfolioList />
                 </ContentsSection>
             </React.Fragment>
         </Layout>
