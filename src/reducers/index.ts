@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 
 import Taps from './tap';
 import TagList from './tag';
-import PostList from './post';
-import BlogPost from './blogPost';
+import PostList from './post/postList';
+import BlogPost from './post/blogPost';
 import PortfolioList from './portfolio/portfolioList';
 import Portfolio from './portfolio/portfolio';
 
