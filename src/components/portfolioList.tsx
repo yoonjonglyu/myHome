@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { RootState } from '../reducers';
 
 interface PortfolioListProps {
     portfolioList : Array<portfolioPorps>
@@ -15,12 +16,13 @@ interface portfolioPorps {
 
 const PortfolioList: React.FC<PortfolioListProps> = (props) => {
     const {
-        portfolioList
-    } = props;
+        portfolioList 
+    } = props; // 컨트롤러같은 구성이 좀 더 세분화 된다는 가정하에 임시 props 컴포넌트 단위로 아키텍처 구성을 어떻게 할지는 아직 고민할 부분이 많다.
+    const tmpportfolioList  = useSelector((state : RootState) => state.PortfolioList.portfolioList);
 
-    const PortfolioItem = portfolioList.length > 0 ? portfolioList.map((item) => {
+    const PortfolioItem = tmpportfolioList.length > 0 ? tmpportfolioList.map((item, key) => {
         return (
-            <li>
+            <li key={key}>
                 <img src="test" />
             </li>
         );
@@ -29,7 +31,7 @@ const PortfolioList: React.FC<PortfolioListProps> = (props) => {
     return (
         <div className="portfolio-list">
             <ul>
-                <li><img src="test" /></li>
+                {PortfolioItem}
             </ul>
         </div>
     );
