@@ -5,6 +5,8 @@ import getAllTags from './post/getAllTags';
 import getPostList from './post/getPostList';
 import getPostContents from './post/getPostContents';
 import getTagPostList from './post/getTagPostList';
+import getPortfolioList from './portfolio/getPortfolioList';
+import getPortfolioContents from './portfolio/getPortfolioContents';
 
 function* RootSaga() {
     yield all([
@@ -12,6 +14,8 @@ function* RootSaga() {
         takeEvery(actionType.LOAD_POST_LIST, getPostList),
         takeEvery(actionType.LOAD_POST_CONTENTS, getPostContents),
         takeEvery(actionType.LOAD_TAG_POST_LIST, getTagPostList),
+        takeEvery(actionType.LOAD_PORTFOLIO_LIST, getPortfolioList),
+        takeEvery(actionType.LOAD_PORTFOLIO_CONTENTS, getPortfolioContents),
     ]);
 };
 
