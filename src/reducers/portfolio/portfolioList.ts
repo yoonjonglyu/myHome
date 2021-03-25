@@ -4,11 +4,12 @@ import * as types from '../../actions/actionTypes';
 
 interface PortfolioListState {
     portfolioList : Array<{
-        Idx: number
-        Date: string
-        Title: string
-        Description: string
-        Tags: Array<{ idx: number, name: string }>  
+        idx: number
+        date: string
+        title: string
+        thum : string
+        description: string
+        tags: Array<{ idx: number, name: string }>  
     }>
 }
 
