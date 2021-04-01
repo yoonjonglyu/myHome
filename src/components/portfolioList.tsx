@@ -27,7 +27,7 @@ const PortfolioList: React.FC<PortfolioListProps> = (props) => {
                 <img src={item.thum} />
                 <h3>{item.title}</h3>
                 <p>{item.description}썸네일 하나 옆에 있고 길쭉한 형태로 타이틀이랑 설명등을 나열한 구조로</p>
-                <p>{item.tags}포트폴리오 정보를 간략히 보여주는데는 태그를 표시하는게 더 나을거같다.</p>
+                <p>포트폴리오 정보를 간략히 보여주는데는 태그를 표시하는게 더 나을거같다.</p>
             </li>
         );
     }) : (<h2>해당하는 포트폴리오가 없습니다.</h2>);
