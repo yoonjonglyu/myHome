@@ -9,8 +9,8 @@ import AboutTech from '../components/aboutTech';
 
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { RootState } from '../reducers';
+import * as actions from '../store/actions';
+import { RootState } from '../store/reducers';
 
 interface MainProps {
     handleTapIndex: Function

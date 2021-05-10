@@ -5,8 +5,8 @@ import { Paper, Tabs, Tab} from '@material-ui/core';
 
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { RootState } from '../reducers';
+import * as actions from '../store/actions';
+import { RootState } from '../store/reducers';
 
 interface HeaderProps {
     tapIndex : number | false,
