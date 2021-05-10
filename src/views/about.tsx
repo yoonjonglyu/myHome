@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import Contact from '../components/contact';
 import ProfileTimeLine from '../components/portfolio/profileTimeLine';
 
