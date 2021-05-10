@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import Intro from '../components/intro';
-import ProfileTimeLine from '../components/profileTimeLine';
+import ProfileTimeLine from '../components/portfolio/profileTimeLine';
 import AboutTech from '../components/aboutTech';
 
 import { Action, Dispatch } from 'redux';
