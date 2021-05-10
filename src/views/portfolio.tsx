@@ -32,7 +32,7 @@ const Portfolio : React.FC<PortfolioProps> = () => {
                     <ListView />
                 </CategorySection>
                 <ContentsSection className="portfolio-contents">
-                    <PortfolioList />
+                    <PortfolioList portfolioList={[]} />
                 </ContentsSection>
             </React.Fragment>
         </Layout>
