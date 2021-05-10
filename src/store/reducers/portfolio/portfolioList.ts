@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import * as actions from '../../actions';
 import * as types from '../../actions/actionTypes';
-import img from '../../assets/images/aws.png';
+import img from '../../../assets/images/aws.png';
 
 interface PortfolioListState {
     portfolioList : Array<{

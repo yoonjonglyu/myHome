@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import Intro from '../components/intro';
-import ProfileTimeLine from '../components/profileTimeLine';
+import ProfileTimeLine from '../components/portfolio/profileTimeLine';
 import AboutTech from '../components/aboutTech';
 
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { RootState } from '../reducers';
+import * as actions from '../store/actions';
+import { RootState } from '../store/reducers';
 
 interface MainProps {
     handleTapIndex: Function

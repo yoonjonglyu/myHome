@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import ListView from '../components/listView';
-import PortfolioList from '../components/portfolioList';
+import PortfolioList from '../components/portfolio/portfolioList';
 
 interface PortfolioProps {
 }
