@@ -1,8 +1,9 @@
 import { Reducer } from 'redux';
-import * as actions from '../../actions';
-import * as types from '../../actions/actionTypes';
 
-interface TagListState {
+import * as Actions from '../../actions';
+import * as Types from '../../actions/actionTypes';
+
+interface TagListProps {
     tagList: {
         essay: Array<TagProps>
         tech: Array<TagProps>
@@ -24,7 +25,7 @@ const tempData = [
     { idx: 7, name: 'React' }
 ];
 
-const initialState: TagListState = {
+const initialState: TagListProps = {
     tagList: {
         essay: tempData,
         tech: tempData,
@@ -32,8 +33,8 @@ const initialState: TagListState = {
     }
 };
 
-const TagList: Reducer<TagListState, actions.TagActions> = (state = initialState, action) => {
-    if (action.type === types.TAG_LIST) {
+const TagList: Reducer<TagListProps, Actions.TagListAction> = (state = initialState, action) => {
+    if (action.type === Types.TAG_LIST) {
         return {
             ...state,
             tagList: action.payload

@@ -1,16 +1,23 @@
 import { combineReducers } from 'redux';
 
-import Taps from './tap';
-import TagList from './tag';
+import TabIndex from './tab/tabIndex';
+import TagList from './tag/tagList';
+
 import PostList from './post/postList';
-import BlogPost from './post/blogPost';
+import PostContents from './post/postContents';
+
 import PortfolioList from './portfolio/portfolioList';
-import Portfolio from './portfolio/portfolio';
+import Portfolio from './portfolio/portfolioContents';
 
 const RootReducers = combineReducers({
-    Taps, TagList, PostList, BlogPost, PortfolioList, Portfolio
+    TabIndex,
+    TagList,
+    PostList,
+    PostContents,
+    PortfolioList,
+    Portfolio
 });
 
-export default RootReducers;
+type RootState = ReturnType<typeof RootReducers>;
 
-export type RootState = ReturnType<typeof RootReducers>;
+export { RootReducers, RootState }

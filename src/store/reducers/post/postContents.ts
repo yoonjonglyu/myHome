@@ -1,14 +1,15 @@
 import { Reducer } from 'redux';
-import * as actions from '../../actions';
-import * as types from '../../actions/actionTypes';
 
-interface BlogPostState {
-    BlogPost : {
-        postTitle : string
-        postDate : string
-        postAuthor : string
-        postContent : string
-        postTags : Array<{idx : number, name : string}>
+import * as Actions from '../../actions';
+import * as Types from '../../actions/actionTypes';
+
+interface PostContentsProps {
+    post: {
+        postTitle: string
+        postDate: string
+        postAuthor: string
+        postContent: string
+        postTags: Array<{ idx: number, name: string }>
     }
 }
 
@@ -28,33 +29,33 @@ const tempContents = `
     코드는 pre로 감싸서 p태그 밖의 스타일링은 class를 통해서가 아니라 태그 자체로 스타일링 해야할거 같다.
 </p>`;
 
-const initialState : BlogPostState = {
-    BlogPost : {
-        postTitle : "블로그 글 타이틀",
-        postDate : "2020-12-04",
-        postAuthor : "ISA(류윤종)",
-        postContent : tempContents,
-        postTags : [
+const initialState: PostContentsProps = {
+    post: {
+        postTitle: "블로그 글 타이틀",
+        postDate: "2020-12-04",
+        postAuthor: "ISA(류윤종)",
+        postContent: tempContents,
+        postTags: [
             {
-                idx : 1,
-                name : "리액트"
+                idx: 1,
+                name: "리액트"
             },
             {
-                idx : 2,
-                name : "웹팩"
+                idx: 2,
+                name: "웹팩"
             },
             {
-                idx : 3,
-                name : "타입스크립트"
+                idx: 3,
+                name: "타입스크립트"
             }
         ]
-    } 
+    }
 }
-const BlogPost : Reducer<BlogPostState, actions.BlogPostActions> = (state = initialState, action) => {
-    if(action.type === types.POST_CONTENTS){
+const BlogPost: Reducer<PostContentsProps, Actions.PostContentsAction> = (state = initialState, action) => {
+    if (action.type === Types.POST_CONTENTS) {
         return {
             ...state,
-            BlogPost : action.payload
+            post: action.payload
         };
     } else {
         return state;
