@@ -1,4 +1,4 @@
-import * as Types from './actionTypes';
+import * as Types from '../actionTypes';
 
 function LOADPOSTCONTENTS (type : string, idx : string) {
     return {

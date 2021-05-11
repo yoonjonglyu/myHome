@@ -3,10 +3,10 @@
  */
 export {TAPINDEX, TapActions} from './tapIndex';
 export {TAGLIST, TagActions} from './tagList';
-export {LOADPOSTLIST, LoadPostActions} from './loadPostList';
-export {POSTLIST, PostActions} from './postList';
-export {LOADPOSTCONTENTS, LoadBlogPostActions} from './loadPostContents';
-export {POSTCONTENTS, BlogPostActions} from './postContents';
+export {LOADPOSTLIST, LoadPostActions} from './post/loadPostList';
+export {POSTLIST, PostActions} from './post/postList';
+export {LOADPOSTCONTENTS, LoadBlogPostActions} from './post/loadPostContents';
+export {POSTCONTENTS, BlogPostActions} from './post/postContents';
 export {LOADTAGPOSTLIST, LoadTagPostActions} from './loadTagPostList';
 export {PORTFOLIOLIST, PortfolioListActions} from './portfolio/portfolioList';
 export {LOADPORTFOLIOLIST, LoadPortfolioListActions} from './portfolio/loadPortfolioList';
