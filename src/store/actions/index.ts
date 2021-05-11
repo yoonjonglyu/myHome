@@ -1,7 +1,7 @@
 /**
  * @descriptions redux action & type
  */
-export { TABINDEX, TapIndexAction } from './tag/tabIndex';
+export { TABINDEX, TabIndexAction } from './tag/tabIndex';
 // 태그
 export { TAGLIST, TagListAction } from './tag/tagList';
 export { LOADTAGLIST, LoadTagListAction } from './tag/loadTagList';

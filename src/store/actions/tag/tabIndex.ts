@@ -7,6 +7,6 @@ function TABINDEX(index: number) {
     };
 };
 
-type TapIndexAction = ReturnType<typeof TABINDEX>;
+type TabIndexAction = ReturnType<typeof TABINDEX>;
 
-export { TABINDEX, TapIndexAction }
+export { TABINDEX, TabIndexAction }
