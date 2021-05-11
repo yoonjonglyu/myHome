@@ -13,6 +13,6 @@ function TAGLIST(list: TagProps) {
     };
 };
 
-type TagActions = ReturnType<typeof TAGLIST>;
+type TagListAction = ReturnType<typeof TAGLIST>;
 
-export { TAGLIST, TagActions }
+export { TAGLIST, TagListAction }

@@ -6,6 +6,6 @@ function LOADPORTFOLIOCONTENTS() {
     };
 }
 
-type LoadPortfolioActions = ReturnType<typeof LOADPORTFOLIOCONTENTS>;
+type LoadPortfolioContentsAction = ReturnType<typeof LOADPORTFOLIOCONTENTS>;
 
-export { LOADPORTFOLIOCONTENTS, LoadPortfolioActions }
+export { LOADPORTFOLIOCONTENTS, LoadPortfolioContentsAction }

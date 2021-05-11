@@ -15,6 +15,6 @@ function POSTCONTENTS(post: BlogPostProps) {
     };
 };
 
-type BlogPostActions = ReturnType<typeof POSTCONTENTS>;
+type PostContentsAction = ReturnType<typeof POSTCONTENTS>;
 
-export { POSTCONTENTS, BlogPostActions }
+export { POSTCONTENTS, PostContentsAction }

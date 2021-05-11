@@ -20,6 +20,6 @@ function PORTFOLIOLIST(list: Array<PortfolioProps>) {
     };
 }
 
-type PortfolioListActions = ReturnType<typeof PORTFOLIOLIST>;
+type PortfolioListAction = ReturnType<typeof PORTFOLIOLIST>;
 
-export { PORTFOLIOLIST, PortfolioListActions }
+export { PORTFOLIOLIST, PortfolioListAction }

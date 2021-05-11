@@ -7,6 +7,6 @@ function LOADPOSTLIST(type: string) {
     };
 };
 
-type LoadPostActions = ReturnType<typeof LOADPOSTLIST>;
+type LoadPostListAction = ReturnType<typeof LOADPOSTLIST>;
 
-export { LOADPOSTLIST, LoadPostActions }
+export { LOADPOSTLIST, LoadPostListAction }

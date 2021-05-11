@@ -10,6 +10,6 @@ function LOADPOSTCONTENTS (type : string, idx : string) {
     };
 };
 
-type LoadBlogPostActions = ReturnType<typeof LOADPOSTCONTENTS>;
+type LoadPostContentsAction = ReturnType<typeof LOADPOSTCONTENTS>;
 
-export { LOADPOSTCONTENTS, LoadBlogPostActions }
+export { LOADPOSTCONTENTS, LoadPostContentsAction }

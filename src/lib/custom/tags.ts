@@ -11,7 +11,7 @@ function tagList() {
 
     const dispatch = useDispatch();
     const getTagList = () => {
-        dispatch(Actions.LOADTAGPOSTLIST);
+        dispatch(Actions.LOADTAGLIST);
     }
     
     return { tagList, getTagList };

@@ -17,6 +17,6 @@ function PORTFOLIOCONTENTS(portfolio: PortfolioProps) {
     };
 }
 
-type PortfolioActions = ReturnType<typeof PORTFOLIOCONTENTS>;
+type PortfolioContentsAction = ReturnType<typeof PORTFOLIOCONTENTS>;
 
-export { PORTFOLIOCONTENTS, PortfolioActions }
+export { PORTFOLIOCONTENTS, PortfolioContentsAction }
