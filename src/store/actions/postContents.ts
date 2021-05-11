@@ -1,18 +1,20 @@
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
 interface BlogPostProps {
-    postTitle : string
-    postDate : string
-    postAuthor : string
-    postContent : string
-    postTags : Array<{idx : number, name : string}>
+    postTitle: string
+    postDate: string
+    postAuthor: string
+    postContent: string
+    postTags: Array<{ idx: number, name: string }>
 }
 
-export const POSTCONTENTS = (post : BlogPostProps) => {
+function POSTCONTENTS(post: BlogPostProps) {
     return {
-        type : types.POST_CONTENTS,
-        payload : post
+        type: Types.POST_CONTENTS,
+        payload: post
     };
 };
 
-export type BlogPostActions = ReturnType<typeof POSTCONTENTS>;
+type BlogPostActions = ReturnType<typeof POSTCONTENTS>;
+
+export { POSTCONTENTS, BlogPostActions }

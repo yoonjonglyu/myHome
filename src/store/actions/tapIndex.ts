@@ -1,10 +1,12 @@
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
-export const TAPINDEX = (index : number) => {
+function TAPINDEX(index: number) {
     return {
-        type : types.TAP_INDEX,
-        payload : index
+        type: Types.TAP_INDEX,
+        payload: index
     };
 };
 
-export type TapActions = ReturnType<typeof TAPINDEX>;
+type TapActions = ReturnType<typeof TAPINDEX>;
+
+export { TAPINDEX, TapActions }

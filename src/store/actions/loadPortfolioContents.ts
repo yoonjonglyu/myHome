@@ -1,12 +1,11 @@
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
-export const LOADPORTFOLIOCONTENTS = () => {
+function LOADPORTFOLIOCONTENTS() {
     return {
-        type : types.LOAD_PORTFOLIO_CONTENTS,
-        payload : {
-            
-        }
+        type: Types.LOAD_PORTFOLIO_CONTENTS
     };
 }
 
-export type LoadPortfolioActions =  ReturnType<typeof LOADPORTFOLIOCONTENTS>;
+type LoadPortfolioActions = ReturnType<typeof LOADPORTFOLIOCONTENTS>;
+
+export { LOADPORTFOLIOCONTENTS, LoadPortfolioActions }

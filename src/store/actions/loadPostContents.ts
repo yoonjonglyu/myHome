@@ -1,8 +1,8 @@
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
-export const LOADPOSTCONTENTS = (type : string, idx : string) => {
+function LOADPOSTCONTENTS (type : string, idx : string) {
     return {
-        type : types.LOAD_POST_CONTENTS,
+        type : Types.LOAD_POST_CONTENTS,
         payload : {
             type : type,
             idx : idx
@@ -10,4 +10,6 @@ export const LOADPOSTCONTENTS = (type : string, idx : string) => {
     };
 };
 
-export type LoadBlogPostActions = ReturnType<typeof LOADPOSTCONTENTS>;
+type LoadBlogPostActions = ReturnType<typeof LOADPOSTCONTENTS>;
+
+export { LOADPOSTCONTENTS, LoadBlogPostActions }

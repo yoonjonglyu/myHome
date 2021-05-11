@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
 interface PostProps {
     postIdx : number
@@ -11,7 +11,7 @@ interface PostProps {
 
 export const POSTLIST = (list : Array<PostProps>) => {
     return {
-        type : types.POST_LIST,
+        type : Types.POST_LIST,
         payload : list
     };
 };

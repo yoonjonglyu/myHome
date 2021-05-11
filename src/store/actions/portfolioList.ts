@@ -1,22 +1,25 @@
-import * as types from './actionTypes';
+import * as Types from './actionTypes';
 
 interface PortfolioProps {
-    portfolioList : Array<{
+    portfolioList: Array<{
         idx: number
         date: string
         title: string
-        thum : string
+        thum: string
         description: string
-        tags: Array<{ idx: number, name: string }>  
+        tags: Array<{ idx: number, name: string }>
     }>
 }
-export const PORTFOLIOLIST = (list : Array<PortfolioProps>) => {
+
+function PORTFOLIOLIST(list: Array<PortfolioProps>) {
     return {
-        type : types.PORTFOLIO_LIST,
-        payload : {
+        type: Types.PORTFOLIO_LIST,
+        payload: {
             list
         }
     };
 }
 
-export type PortfolioListActions =  ReturnType<typeof PORTFOLIOLIST>;
+type PortfolioListActions = ReturnType<typeof PORTFOLIOLIST>;
+
+export { PORTFOLIOLIST, PortfolioListActions }
