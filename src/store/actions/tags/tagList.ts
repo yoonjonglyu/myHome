@@ -1,4 +1,4 @@
-import * as Types from './actionTypes';
+import * as Types from '../actionTypes';
 
 interface TagProps {
     essay: Array<any>
