@@ -13,8 +13,11 @@ function postList() {
     const getPostList = () => {
         dispatch(Actions.LOADPOSTLIST);
     }
+    const getPostListByTag = (type: string, idx: string) => {
+        dispatch(Actions.LOADPOSTLISTBYTAG(type, idx));
+    }
 
-    return { postList, getPostList };
+    return { postList, getPostList, getPostListByTag };
 }
 function postContents() {
     const { postContents } = useSelector((state: RootState) => ({
