@@ -4,21 +4,10 @@ import { Grid } from '@material-ui/core';
 
 import ListItem from './listItem';
 
-import { Action, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { RootState } from '../reducers';
+import { tagList, tabIndex } from '../lib/custom/tag';
 
 interface ListViewProps {
-    tagList: {
-        essay: Array<TagProps>
-        tech: Array<TagProps>
-        portfolio: Array<TagProps>
-    }
-    tapIndex: number | false
-}
-interface TagProps {
-    idx : number
-    name : string
+
 }
 
 const useStyles = makeStyles(() => ({
@@ -29,30 +18,28 @@ const useStyles = makeStyles(() => ({
 
 const ListView: React.FC<ListViewProps> = (props) => {
     const classes = useStyles();
-    const {
-        tagList,
-        tapIndex
-    } = props;
     const [tags, setTags]: Array<any> = useState([]);
+    const tag = tagList();
+    const tab = tabIndex();
 
     useEffect(() => {
         let state: object;
-        switch (tapIndex) {
+        switch (tab.tabIndex) {
             case 2:
-                state = tagList.essay;
+                state = tag.tagList.essay;
                 break;
             case 3:
-                state = tagList.tech;
+                state = tag.tagList.tech;
                 break;
             case 4:
-                state = tagList.portfolio;
+                state = tag.tagList.portfolio;
                 break;
             default:
                 state = [];
                 break;
         }
         setTags(state);
-    }, [tapIndex, tagList]);
+    }, [tab.tabIndex, tag.tagList]);
 
     const ListRow = (
         <Grid container item xs={12} spacing={1}>
@@ -67,16 +54,5 @@ const ListView: React.FC<ListViewProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ TagList, Taps }: RootState) => {
-    return {
-        tagList: TagList.tagList,
-        tapIndex: Taps.tapIndex
-    };
-};
 
-const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
-    return {
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListView);
+export default ListView
