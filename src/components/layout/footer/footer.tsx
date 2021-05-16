@@ -1,36 +1,32 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 
 import Contact from '../../contact';
 
 interface FooterProps {
 }
 
-const useStyles = makeStyles((theme) => ({
-    root : {
-      textAlign : 'center',
-      fontSize : '1.2rem',
-    },
-    copyRight : {
-        color : 'gray'
-    }
-}));
+const FooterArea = styled.footer`
+    text-align : center;
+    font-size : 1.2rem;
+`;
+const CopyRight = styled.small`
+    color : gray;
+`;
 
 const Footer: React.FC<FooterProps> = () => {
-    const classes = useStyles();
-
     return (
-        <footer className={classes.root}>
+        <FooterArea>
             <Paper>
                 <Contact />
-                <small className={classes.copyRight}>
+                <CopyRight>
                     Copyright© ISA(yoonjonglyu)
-                </small>
+                </CopyRight>
             </Paper>
-        </footer>
+        </FooterArea>
     );
 };
 
 
-export default Footer;
+export { Footer, FooterProps };
