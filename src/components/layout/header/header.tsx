@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import Styled from 'styled-components';
 import { Paper, Tabs, Tab } from '@material-ui/core';
 
 import { tabIndex } from '../../../lib/custom/tag';
@@ -8,18 +8,15 @@ import { tabIndex } from '../../../lib/custom/tag';
 interface HeaderProps {
 };
 
-const useStyles = makeStyles(() => ({
-    root: {
-        position: 'fixed',
-        width: '99%',
-        top: 0,
-        left: '0.5%',
-        zIndex: 999999
-    }
-}));
+const HeaderArea = Styled.header`
+    position : fixed;
+    width : 99%;
+    top : 0;
+    left : 0.5%;
+    z-index : 999999;
+`;
 
 const Header: React.FC<HeaderProps> = (props) => {
-    const classes = useStyles();
     const tab = tabIndex();
     const [value, setValue] = useState(tab.tabIndex);
 
@@ -60,7 +57,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     }, []);
 
     return (
-        <header className={classes.root}>
+        <HeaderArea>
             <Paper component="nav">
                 <Tabs
                     value={value}
@@ -76,7 +73,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     <Tab label="Portfolio" component={Link} to="/portfolio" />
                 </Tabs>
             </Paper>
-        </header>
+        </HeaderArea>
     );
 };
 
