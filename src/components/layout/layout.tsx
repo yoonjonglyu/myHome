@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
@@ -9,7 +9,7 @@ interface LayoutProps {
     children: React.ReactChild
 }
 
-const MainContainer = styled(Container)`
+const MainContainer = Styled(Container)`
     padding : 50px 0 0 0;
     minHeight : 90vh;
 `;
@@ -31,4 +31,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 };
 
 
-export default Layout
+export { Layout, LayoutProps }
