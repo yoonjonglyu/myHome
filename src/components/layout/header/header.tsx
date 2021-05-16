@@ -9,7 +9,7 @@ import * as actions from '../../../store/actions';
 import { RootState } from '../../../store/reducers';
 
 interface HeaderProps {
-    tapIndex: number | false,
+    tabIndex: number | false,
     handleTapIndex: Function
 };
 
@@ -26,10 +26,10 @@ const useStyles = makeStyles(() => ({
 const Header: React.FC<HeaderProps> = (props) => {
     const classes = useStyles();
     const {
-        tapIndex,
+        tabIndex,
         handleTapIndex
     } = props;
-    const [value, setValue] = useState(tapIndex);
+    const [value, setValue] = useState(tabIndex);
 
     const handleTap = (e: any, value: number) => {
         setValue(value);
@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         window.scrollTo(0, 0);
     }
     useEffect(() => {
-        if (tapIndex === false) {
+        if (tabIndex === false) {
             const state: string = location.hash.split('\/')[1]?.split("?")[0];
 
             switch (state) {
@@ -89,15 +89,15 @@ const Header: React.FC<HeaderProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ Taps }: RootState) => {
+const mapStateToProps = ({ TabIndex }: RootState) => {
     return {
-        tapIndex: Taps.tapIndex
+        tabIndex: TabIndex.tabIndex
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
     return {
-        handleTapIndex: (value: number) => { dispatch(actions.TAPINDEX(value)) }
+        handleTapIndex: (value: number) => { dispatch(actions.TABINDEX(value)) }
     };
 }
 
