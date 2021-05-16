@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Layout from '../components/layout/layout';
+import { Layout } from '../components/layout/layout';
 
 interface NotFoundProps {
-    
+
 }
 
-const NotFound : React.FC<NotFoundProps> = () => {
+const NotFound: React.FC<NotFoundProps> = () => {
     return (
         <Layout>
             <h1>
