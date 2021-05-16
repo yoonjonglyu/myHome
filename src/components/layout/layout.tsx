@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
 import { Header } from './header/header';
-import Footer from './footer/footer';
+import { Footer } from './footer/footer';
 
 interface LayoutProps {
     children: React.ReactChild
