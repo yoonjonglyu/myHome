@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Layout from '../components/layout/layout';
+import { Layout } from '../components/layout/layout';
 import ListView from '../components/listView';
 import PortfolioList from '../components/portfolio/portfolioList';
 
@@ -23,8 +23,8 @@ const ContentsSection = styled.section`
 `;
 
 
-const Portfolio : React.FC<PortfolioProps> = () => {
-    return(
+const Portfolio: React.FC<PortfolioProps> = () => {
+    return (
         <Layout>
             <React.Fragment>
                 <CategorySection className="portfolio-category">

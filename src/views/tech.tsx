@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
-import Layout from '../components/layout/layout';
+import { Layout } from '../components/layout/layout';
 import ListView from '../components/listView';
 const BlogPost = lazy(() => import('../components/blogPost'));
 const PostList = lazy(() => import('../components/postList'));
