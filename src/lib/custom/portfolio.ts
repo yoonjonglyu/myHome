@@ -17,6 +17,19 @@ function portfolioList() {
     return { portfolioList, getPortfolioList };
 }
 
+function portfolioContents() {
+    const { portfolioContents } = useSelector((state: RootState) => ({
+        portfolioContents: state.Portfolio.contents
+    }));
+
+    const dispatch = useDispatch();
+    const getPortfolioContents = () => {
+        dispatch(Actions.LOADPORTFOLIOCONTENTS);
+    }
+
+    return { portfolioContents, getPortfolioContents };
+}
 
 
-export { portfolioList }
+
+export { portfolioList, portfolioContents }
