@@ -1,37 +1,33 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 
 import Header from './header/header';
 import Footer from './footer/footer';
 
 interface LayoutProps {
-    children : React.ReactChild
+    children: React.ReactChild
 }
 
-const useStyles = makeStyles((theme) => ({
-    root : {
-        paddingTop : '50px',
-        minHeight : '90vh'
-    }
-}));
+const MainContainer = styled(Container)`
+    padding : 50px 0 0 0;
+    minHeight : 90vh;
+`
 
 
-const Layout : React.FC<LayoutProps> = ({ children }) => {
-    const classes = useStyles();
-
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="wrap">
             <Header />
-            <Container
-             maxWidth="md"
-             className={`container ${classes.root}`}
-             component="article"
-             >
-               {children}
-            </Container>
+            <main role="main">
+                <MainContainer
+                    maxWidth="md"
+                >
+                    {children}
+                </MainContainer>
+            </main>
             <Footer />
-        </div>        
+        </div>
     );
 };
 
