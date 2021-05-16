@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Tabs, Tab} from '@material-ui/core';
+import { Paper, Tabs, Tab } from '@material-ui/core';
 
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
-import { RootState } from '../../store/reducers';
+import * as actions from '../../../store/actions';
+import { RootState } from '../../../store/reducers';
 
 interface HeaderProps {
-    tapIndex : number | false,
+    tapIndex: number | false,
     handleTapIndex: Function
 };
 
 const useStyles = makeStyles(() => ({
     root: {
-        position : 'fixed',
-        width : '99%',
+        position: 'fixed',
+        width: '99%',
         top: 0,
         left: '0.5%',
-        zIndex : 999999
+        zIndex: 999999
     }
 }));
 
@@ -30,17 +30,17 @@ const Header: React.FC<HeaderProps> = (props) => {
         handleTapIndex
     } = props;
     const [value, setValue] = useState(tapIndex);
-    
-    const handleTap = (e : any, value : number) => {
+
+    const handleTap = (e: any, value: number) => {
         setValue(value);
         handleTapIndex(value);
         window.scrollTo(0, 0);
     }
     useEffect(() => {
-        if(tapIndex === false){
-            const state : string = location.hash.split('\/')[1]?.split("?")[0];
+        if (tapIndex === false) {
+            const state: string = location.hash.split('\/')[1]?.split("?")[0];
 
-            switch(state){
+            switch (state) {
                 case '':
                     setValue(0);
                     handleTapIndex(0);
@@ -89,15 +89,15 @@ const Header: React.FC<HeaderProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ Taps } : RootState) => {
+const mapStateToProps = ({ Taps }: RootState) => {
     return {
         tapIndex: Taps.tapIndex
     };
 };
 
-const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
     return {
-        handleTapIndex : (value : number) => {dispatch(actions.TAPINDEX(value))} 
+        handleTapIndex: (value: number) => { dispatch(actions.TAPINDEX(value)) }
     };
 }
 
