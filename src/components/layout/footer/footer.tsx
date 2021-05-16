@@ -1,17 +1,17 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
 import Contact from '../../contact';
 
 interface FooterProps {
 }
 
-const FooterArea = styled.footer`
+const FooterArea = Styled.footer`
     text-align : center;
     font-size : 1.2rem;
 `;
-const CopyRight = styled.small`
+const CopyRight = Styled.small`
     color : gray;
 `;
 
