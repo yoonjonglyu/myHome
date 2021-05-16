@@ -12,8 +12,7 @@ interface LayoutProps {
 const MainContainer = styled(Container)`
     padding : 50px 0 0 0;
     minHeight : 90vh;
-`
-
+`;
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
@@ -32,4 +31,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 };
 
 
-export default Layout;
+export default Layout
