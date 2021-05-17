@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
-import { Action, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../store/actions';
-import { RootState } from '../store/reducers';
+import { postList } from '../lib/custom/post';
+import { tabIndex } from '../lib/custom/tag';
 
 interface PostListProps {
-    postList : Array<PostProps>
-    tapIndex : number | false
-    getPostList : Function
-    getTagPostList : Function
+
 }
 interface PostProps {
     postIdx : number
@@ -22,46 +17,44 @@ interface PostProps {
     postTags : Array<{idx : number, name : string}>    
 }
 
-const ContentsItem = styled.div`
+const ContentsItem = Styled.div`
     padding : 30px 0;
     border-bottom : 1px solid #dbe2ef;
 `;
-const PostLink = styled(Link)`
+const PostLink = Styled(Link)`
     text-decoration : none;
     color : unset;
 `;
-const MetaText = styled.span`
+const MetaText = Styled.span`
     font-size : 0.9rem;
     color : gray;
 `;
-const Headline = styled.h2`
+const Headline = Styled.h2`
     font-size : 2rem;
 `;
-const SubText = styled.p`
+const SubText = Styled.p`
     font-size : 1rem;
     color : #0f4c75;
 `;
 
 const PostList: React.FC<PostListProps> = (props) => {
     const {
-        postList,
-        tapIndex,
-        getPostList,
-        getTagPostList,
     } = props;
+    const post = postList();
+    const tab = tabIndex();
     const [tag, setTag] = useState(location.hash.split("?")[1]?.split("=")[1]);
     
     useEffect(() => {
         const isTag = location.hash.split("?")[1]?.split("=");
-        switch(tapIndex){
+        switch(tab.tabIndex){
             case 2:
-                isTag?.[0] === "tags" ? getTagPostList("essay", isTag[1]) : getPostList("essay");
+                isTag?.[0] === "tags" ? post.getPostListByTag("essay", isTag[1]) : post.getPostList("essay");
                 break;
             case 3:
-                isTag?.[0] === "tags" ? getTagPostList("tech", isTag[1]) : getPostList("tech");
+                isTag?.[0] === "tags" ? post.getPostListByTag("tech", isTag[1]) : post.getPostList("tech");
                 break;
             case 4:
-                isTag?.[0] === "tags" ? getTagPostList("portfolio", isTag[1]) : getPostList("portfolio");
+                isTag?.[0] === "tags" ? post.getPostListByTag("portfolio", isTag[1]) : post.getPostList("portfolio");
                 break;
             default:
                 break;
@@ -74,9 +67,9 @@ const PostList: React.FC<PostListProps> = (props) => {
         });
 
         return () => {clearInterval(watchTag)};
-    }, [tapIndex, tag]);
+    }, [tab.tabIndex, tag]);
 
-    const List = postList.length > 0 ? postList.map((post, key) => {
+    const List = post.postList.length > 0 ? post.postList.map((post, key) => {
         return (
             <ContentsItem key={key}>
                 <PostLink to={`?post=${post.postIdx}`}>
@@ -97,18 +90,4 @@ const PostList: React.FC<PostListProps> = (props) => {
     );
 };
 
-const mapStateToProps = ({ PostList, Taps } : RootState) => {
-    return {
-        postList : PostList.PostList,
-        tapIndex : Taps.tapIndex
-    };
-};
-
-const mapDispatchToProps = (dispatch : Dispatch<Action<any>>) => {
-    return {
-        getPostList : (type : string) => {dispatch(actions.LOADPOSTLIST(type))},
-        getTagPostList : (type : string, idx : string) => {dispatch(actions.LOADTAGPOSTLIST(type, idx))},
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default PostList
