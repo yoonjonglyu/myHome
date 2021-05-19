@@ -3,23 +3,12 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import TagList from './tagList';
 
-import { Action, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../store/actions';
-import { RootState } from '../store/reducers';
+import { postContents } from '../lib/custom/post';
+import { tabIndex } from '../lib/custom/tag';
 
-interface PostProps {
-    postTitle : string
-    postDate : string
-    postAuthor : string
-    postContent : string
-    postTags : Array<{idx : number, name : string}>
-}
 interface BlogPostProps {
-    postData : PostProps
-    getPostData : Function
-    tapIndex : number
-}    
+
+}
 
 const BlogPostStyle = createGlobalStyle`
     h3 {
@@ -69,27 +58,21 @@ const PostAuthor = styled.strong`
     font-size : 1rem;
 `;
 
-const BlogPostProps: React.FC<BlogPostProps> = (props) => {
-    const {
-        postData,
-        getPostData,
-        tapIndex
-    } = props;
+const BlogPost: React.FC<BlogPostProps> = (props) => {
+    const post = postContents();
+    const tab = tabIndex();
     const {
         postTitle,
         postDate,
         postAuthor,
         postContent,
         postTags
-    } = postData;
+    } = post.postContents;
     const Disqus = (disqus_title: string, disqus_url: string) => {
+        let DISQUS: any;
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        const disqus_config = function () {
-            this.page.url = disqus_url;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = disqus_title; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
         if (typeof (DISQUS) === 'undefined') {
             (function () { // DON'T EDIT BELOW THIS LINE
                 const d = document, s = d.createElement('script');
@@ -111,25 +94,25 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
 
     useEffect(() => {
         const locationState = location.hash.split('?')[1].split('=');
-        if(locationState[0] === "post"){
-            switch(tapIndex){
+        if (locationState[0] === "post") {
+            switch (tab.tabIndex) {
                 case 2:
-                    getPostData("essay", locationState[1]);
+                    post.getPostContents("essay", locationState[1]);
                     break;
                 case 3:
-                    getPostData("tech", locationState[1]);
+                    post.getPostContents("tech", locationState[1]);
                     break;
                 case 4:
-                    getPostData("portfolio", locationState[1]);
+                    post.getPostContents("portfolio", locationState[1]);
                     break;
                 default:
                     break;
             }
             Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/').slice(1).join('\/')}`);
         }
-    }, [tapIndex]);
+    }, [tab.tabIndex]);
 
-    const blogPost = postData.postTitle !== "블로그 글 타이틀" ? (
+    const blogPost = post.postContents.postTitle !== "블로그 글 타이틀" ? (
         <React.Fragment>
             <BlogPostStyle />
             <header className="post-header">
@@ -141,7 +124,7 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
                     </PostAuthor>
                 </PostMeta>
             </header>
-            <div className="post-contents" dangerouslySetInnerHTML={{__html : postContent}}>
+            <div className="post-contents" dangerouslySetInnerHTML={{ __html: postContent }}>
             </div>
             <div className="post-tags">
                 <TagList taglist={postTags} />
@@ -153,31 +136,19 @@ const BlogPostProps: React.FC<BlogPostProps> = (props) => {
         </React.Fragment>
     ) : (
         <React.Fragment>
-        <BlogPostStyle />
-        <header className="post-header">
-            <PostTitle className="post-title">삭제된 글입니다.</PostTitle>
-        </header>
-        <div className="post-comments">
-            <div id="disqus_thread"></div>
-        </div>
-        <script id="dsq-count-scr" src="//https-yoonjonglyu-github-io-myhome.disqus.com/count.js" async></script>
-    </React.Fragment>
+            <BlogPostStyle />
+            <header className="post-header">
+                <PostTitle className="post-title">삭제된 글입니다.</PostTitle>
+            </header>
+            <div className="post-comments">
+                <div id="disqus_thread"></div>
+            </div>
+            <script id="dsq-count-scr" src="//https-yoonjonglyu-github-io-myhome.disqus.com/count.js" async></script>
+        </React.Fragment>
     );
 
     return blogPost;
 };
 
-const mapStateToProps = ({ BlogPost, Taps }: RootState) => {
-    return {
-        postData : BlogPost.BlogPost,
-        tapIndex : Taps.tapIndex
-    };
-};
 
-const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
-    return {
-        getPostData : (type : string, idx : string) => {dispatch(actions.LOADPOSTCONTENTS(type , idx))}
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogPostProps);
+export default BlogPost

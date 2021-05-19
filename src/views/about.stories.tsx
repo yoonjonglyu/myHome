@@ -3,18 +3,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 
-import { Header, HeaderProps } from './header';
-import Store from '../../../store/configureStore';
+import About from './about';
+import Store from '../store/configureStore';
 
 export default {
-    title: "개인블로그/Layout/Header",
-    component: Header,
+    title: "VIEW/About",
+    component: About,
     decorators: [(Story) => <Provider store={Store}><Router><Story /></Router></Provider>]
 } as Meta
 
-const template: Story<HeaderProps> = (args) => <Header {...args} />;
+const template: Story = (args) => <About {...args} />;
 
 export const Basic = template.bind({});
 Basic.args = {
-
 };

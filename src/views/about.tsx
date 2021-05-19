@@ -1,39 +1,35 @@
 import React from 'react';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import Contact from '../components/contact';
 import ProfileTimeLine from '../components/portfolio/profileTimeLine';
 
-import devFront1 from '../assets/images/devmatch.jpg';
-import samTest from '../assets/images/sam-test.jpg';
-import samType from '../assets/images/sam-type.jpg';
+import DevFront1 from '../assets/images/devmatch.jpg';
+import SamTest from '../assets/images/sam-test.jpg';
+import SamType from '../assets/images/sam-type.jpg';
 
-interface AboutProps {
-
-}
-
-const HeadLine1 = styled.h1`
+const HeadLine1 = Styled.h1`
     text-align : center;
     font-size : 1.6rem;
 `;
-const AboutList = styled.ul`
+const AboutList = Styled.ul`
     padding : 8px 20px;
     font-size : 1.1rem;
 `;
-const HeadLine2 = styled.h2`
+const HeadLine2 = Styled.h2`
     text-align : center;
     margin-top : 24px;
 `;
-const HeadLine3 = styled.h3`
+const HeadLine3 = Styled.h3`
     text-align : center;
 `;
-const Image = styled.img`
+const Image = Styled.img`
     width : 100%;
 `;
 
 
-const About: React.FC<AboutProps> = () => {
+const About: React.FC = () => {
     return (
         <Layout>
             <React.Fragment>
@@ -71,16 +67,16 @@ const About: React.FC<AboutProps> = () => {
                 <section className="about-info">
                     <HeadLine2>각종 챌린지 및 인적성 결과</HeadLine2>
                     <HeadLine3>프로그래머스 2020 Dev-Matching: 웹 프론트엔드 개발자(하반기)</HeadLine3>
-                    <a href={devFront1} target="_blank" title="프로그래머스 하반기 데브매칭">
-                        <Image src={devFront1} alt="데브매칭 상위 5프로" />
+                    <a href={DevFront1} target="_blank" title="프로그래머스 하반기 데브매칭">
+                        <Image src={DevFront1} alt="데브매칭 상위 5프로" />
                     </a>
                     <HeadLine3>사람인 인적성</HeadLine3>
-                    <a href={samTest} target="_blank" title="사람인 인적성검사 결과">
-                        <Image src={samTest} alt="인적성 직무접합 높음, 상위 1프로" />
+                    <a href={SamTest} target="_blank" title="사람인 인적성검사 결과">
+                        <Image src={SamTest} alt="인적성 직무접합 높음, 상위 1프로" />
                     </a>
                     <HeadLine3>사람인 성향분석</HeadLine3>
-                    <a href={samType} target="_blank" title="사람인 성향 분석 결과">
-                        <Image src={samType} alt="성향 분석 관습, 진취, 예술, 탐구, 현실형" />
+                    <a href={SamType} target="_blank" title="사람인 성향 분석 결과">
+                        <Image src={SamType} alt="성향 분석 관습, 진취, 예술, 탐구, 현실형" />
                     </a>
                 </section>
             </React.Fragment>

@@ -10,8 +10,8 @@ function postList() {
     }));
 
     const dispatch = useDispatch();
-    const getPostList = () => {
-        dispatch(Actions.LOADPOSTLIST);
+    const getPostList = (type: string) => {
+        dispatch(Actions.LOADPOSTLIST(type));
     }
     const getPostListByTag = (type: string, idx: string) => {
         dispatch(Actions.LOADPOSTLISTBYTAG(type, idx));
