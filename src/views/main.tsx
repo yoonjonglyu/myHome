@@ -1,42 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import Intro from '../components/intro';
 import ProfileTimeLine from '../components/portfolio/profileTimeLine';
 import AboutTech from '../components/aboutTech';
 
-import { Action, Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../store/actions';
-import { RootState } from '../store/reducers';
+import { tabIndex } from '../lib/custom/tag';
 
 interface MainProps {
-    handleTapIndex: Function
 }
 
-const QuickLink = styled(Link)`
+const QuickLink = Styled(Link)`
     text-decoration : none;
     color : unset;
 `;
-const HeadLine = styled.h2`
+const HeadLine = Styled.h2`
     text-align : center;
     font-size : 1.5rem;
 `;
-const Description = styled.p`
+const Description = Styled.p`
     text-align : center;
     font-size: 1.1rem;
     line-height: 1.6rem;
 `;
 
 const Main: React.FC<MainProps> = (props) => {
-    const {
-        handleTapIndex
-    } = props;
+    const tab = tabIndex();
 
-    const handleTap = (e: any, value: number) => {
-        handleTapIndex(value);
+    const handleTab = (e: any, value: number) => {
+        tab.handleTapIndex(value);
         window.scrollTo(0, 0);
     }
 
@@ -48,7 +42,7 @@ const Main: React.FC<MainProps> = (props) => {
                 </section>
                 <section className="main-about">
                     <HeadLine>개인 연력</HeadLine>
-                    <QuickLink to="./about" title="더 알아보기" onClick={(e) => { handleTap(e, 1) }}>
+                    <QuickLink to="./about" title="더 알아보기" onClick={(e) => handleTab(e, 1)}>
                         <ProfileTimeLine />
                     </QuickLink>
                 </section>
@@ -68,15 +62,4 @@ const Main: React.FC<MainProps> = (props) => {
     );
 };
 
-const mapStateToProps = (state: RootState) => {
-    return {
-    };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
-    return {
-        handleTapIndex: (value: number) => { dispatch(actions.TAPINDEX(value)) }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export { Main, MainProps }
