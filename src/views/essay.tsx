@@ -11,10 +11,10 @@ const Headline = Styled.h1`
     font-size : 1.2rem;
 `;
 
-const Essay: React.FC = () => {
+const Essay: React.FC = function () {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
     const EssayContents = isPost === "post" ? BlogPost : PostList;
-    
+
     return (
         <Layout>
             <React.Fragment>
@@ -32,4 +32,4 @@ const Essay: React.FC = () => {
     );
 }
 
-export default Essay;
+export default Essay

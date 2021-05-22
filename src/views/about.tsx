@@ -29,7 +29,7 @@ const Image = Styled.img`
 `;
 
 
-const About: React.FC = () => {
+const About: React.FC = function () {
     return (
         <Layout>
             <React.Fragment>
@@ -84,4 +84,4 @@ const About: React.FC = () => {
     );
 }
 
-export default About;
+export default About

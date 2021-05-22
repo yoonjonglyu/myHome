@@ -23,7 +23,7 @@ const ContentsSection = Styled.section`
 `;
 
 
-const Portfolio: React.FC<PortfolioProps> = () => {
+const Portfolio: React.FC<PortfolioProps> = function () {
     return (
         <Layout>
             <React.Fragment>
@@ -37,6 +37,6 @@ const Portfolio: React.FC<PortfolioProps> = () => {
             </React.Fragment>
         </Layout>
     );
-}
+};
 
-export { Portfolio, PortfolioProps };
+export { Portfolio, PortfolioProps }

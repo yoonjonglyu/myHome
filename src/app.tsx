@@ -9,7 +9,7 @@ const Essay = lazy(() => import('./views/essay'));
 const NotFound = lazy(() => import('./views/notFound'));
 import Loading from './components/loading';
 
-const App: React.FC = () => {
+const App: React.FC = function () {
     return (
         <Router>
             <Switch>
@@ -26,4 +26,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default App

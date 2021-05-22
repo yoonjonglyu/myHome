@@ -26,7 +26,7 @@ const Description = Styled.p`
     line-height: 1.6rem;
 `;
 
-const Main: React.FC<MainProps> = (props) => {
+const Main: React.FC<MainProps> = function (props) {
     const tab = tabIndex();
 
     const handleTab = (e: any, value: number) => {

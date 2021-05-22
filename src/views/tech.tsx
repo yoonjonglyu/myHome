@@ -11,7 +11,7 @@ const Headline = Styled.h1`
     font-size : 1.2rem;
 `;
 
-const Tech: React.FC = () => {
+const Tech: React.FC = function () {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
     const TechContents = isPost === "post" ? BlogPost : PostList;
 
@@ -30,6 +30,6 @@ const Tech: React.FC = () => {
             </React.Fragment>
         </Layout>
     );
-}
+};
 
 export default Tech
