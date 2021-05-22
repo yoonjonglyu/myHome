@@ -1,22 +1,20 @@
 import React, { lazy, Suspense } from 'react';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import ListView from '../components/listView';
 const BlogPost = lazy(() => import('../components/blogPost'));
 const PostList = lazy(() => import('../components/postList'));
 
-interface EssayProps {
-
-}
-const Headline = styled.h1`
+const Headline = Styled.h1`
     text-align : center;
     font-size : 1.2rem;
 `;
 
-const Essay: React.FC<EssayProps> = () => {
+const Essay: React.FC = () => {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
     const EssayContents = isPost === "post" ? BlogPost : PostList;
+    
     return (
         <Layout>
             <React.Fragment>
