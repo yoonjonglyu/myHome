@@ -1,21 +1,17 @@
 import React, { lazy, Suspense } from 'react';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import ListView from '../components/listView';
 const BlogPost = lazy(() => import('../components/blogPost'));
 const PostList = lazy(() => import('../components/postList'));
 
-interface TechProps {
-
-}
-
-const Headline = styled.h1`
+const Headline = Styled.h1`
     text-align : center;
     font-size : 1.2rem;
 `;
 
-const Tech: React.FC<TechProps> = () => {
+const Tech: React.FC = function () {
     const isPost = location.hash.split('?')[1]?.split("=")[0];
     const TechContents = isPost === "post" ? BlogPost : PostList;
 
@@ -34,6 +30,6 @@ const Tech: React.FC<TechProps> = () => {
             </React.Fragment>
         </Layout>
     );
-}
+};
 
-export default Tech;
+export default Tech

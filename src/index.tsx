@@ -6,8 +6,7 @@ import Store from './store/configureStore';
 
 import App from './app';
 
-
-const render = (Components: React.FC) => {
+function render(Components: React.FC) {
     ReactDOM.render(
         <Provider store={Store}>
             <Components />

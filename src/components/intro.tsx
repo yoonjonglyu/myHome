@@ -3,9 +3,6 @@ import styled, { keyframes } from 'styled-components';
 
 import BackGroundIMG from '../assets/images/intro_1280.png';
 
-interface IntroProps {
-
-}
 const Cursor = keyframes`
     0%{border-right: 1px solid #fff} 
     50%{border-right: 1px solid #000} 
@@ -25,7 +22,7 @@ const IntroBox = styled.div`
     background-size : cover;
 `;
 
-const Headline = styled.h1<{isEnd : boolean}>`
+const Headline = styled.h1<{ isEnd: boolean }>`
     display : inline-block;
     margin : 90px 0 20px 0;
     font-size : ${props => props.isEnd ? "2.5rem" : "2rem"};
@@ -33,10 +30,10 @@ const Headline = styled.h1<{isEnd : boolean}>`
     color : #eaeaea;
     &:after {
         content : '';
-        animation : ${props => props.isEnd ? 'none' : Cursor } 0.5s step-end infinite;
+        animation : ${props => props.isEnd ? 'none' : Cursor} 0.5s step-end infinite;
     }
 `;
-const AboutHead = styled.span<{isStart : boolean, isEnd : boolean}>`
+const AboutHead = styled.span<{ isStart: boolean, isEnd: boolean }>`
     display : inline-block;
     margin : 20px 8px;
     font-size : 1.3rem;
@@ -48,7 +45,7 @@ const AboutHead = styled.span<{isStart : boolean, isEnd : boolean}>`
         animation : ${props => (props.isStart && props.isEnd === false) ? Cursor : 'none'} 0.5s step-end infinite;
     }
 `;
-const IntroText = styled.span<{isStart : boolean}>`
+const IntroText = styled.span<{ isStart: boolean }>`
     display : inline-block;
     font-size : 1.2rem;
     line-height : 1.5rem;
@@ -59,14 +56,7 @@ const IntroText = styled.span<{isStart : boolean}>`
     }
 `;
 
-const Intro: React.FC<IntroProps> = () => {
-    const helloText = "Hello, World!";
-    const aboutText = "소프트웨어 장인을 목표로 노력하는 개발자 류윤종입니다.";
-    const subText = [
-        "JavaScript(TypeScript)를 이용한 풀스택 개발을 지향합니다.",
-        "클린 코드, 누구나 이해하기 쉬운 코드 견고한 구조를 지향합니다.",
-        "늘 표면을 넘어 그 너머의 원리를 고민합니다."
-    ];
+const Intro: React.FC = function () {
     const [headline, setHeadline] = useState("");
     const [about, setAbout] = useState("");
     const [intro, setIntro] = useState("");
@@ -75,27 +65,29 @@ const Intro: React.FC<IntroProps> = () => {
     const [aboutAvail, setAboutAvail] = useState(false);
     const [time, setTime] = useState(100);
 
-    const typing = (dom: React.Dispatch<React.SetStateAction<string>>, text: string) => {
-        dom(text);
-    }
-
     const typeIntro = () => {
-        if (headline.length < helloText.length) { // hello world typing
-            const state = helloText.split('');
-            typing(setHeadline, `${headline}${state[headline.length]}`);
-        } else if (about.length < aboutText.length) { // about typing
-            const state = aboutText.split('');
-            typing(setAbout, `${about}${state[about.length]}`);
+        const IntroContents = {
+            greeting: "Hello, World!",
+            aboutme: "소프트웨어 장인을 목표로 노력하는 개발자 류윤종입니다.",
+            description: [
+                "JavaScript(TypeScript)를 이용한 풀스택 개발을 지향합니다.",
+                "클린 코드, 누구나 이해하기 쉬운 코드 견고한 구조를 지향합니다.",
+                "늘 표면을 넘어 그 너머의 원리를 고민합니다."
+            ]
+        };
 
-            if (headAvail === false) { 
+        if (headline.length < IntroContents.greeting.length) {
+            typing(setHeadline, `${headline}${contents("greeting")[headline.length]}`);
+        } else if (about.length < IntroContents.aboutme.length) {
+            typing(setAbout, `${about}${contents("aboutme")[about.length]}`);
+            if (headAvail === false) {
                 setHeadAvail(true);
             }
-        } else if (intro.length < subText[introIndex].length) { // intro typing
-            if (intro.length === (subText[introIndex].length - 1)) { // 문장 완성 후 잠시 멈춤
+        } else if (intro.length < IntroContents.description[introIndex].length) {
+            if (intro.length === (IntroContents.description[introIndex].length - 1)) { // 문장 완성 후 잠시 멈춤
                 setTime(800);
             }
-            const state = subText[introIndex].split('');
-            typing(setIntro, `${intro}${state[intro.length]}`);
+            typing(setIntro, `${intro}${contents("description")[intro.length]}`);
 
             if (aboutAvail === false) {
                 setAboutAvail(true);
@@ -103,7 +95,7 @@ const Intro: React.FC<IntroProps> = () => {
             }
         } else { // intro 초기화
             let state = 0;
-            if (introIndex + 1 < subText.length) {
+            if (introIndex + 1 < IntroContents.description.length) {
                 state = 1 + introIndex;
                 setIntroIndex((1 + introIndex));
             } else {
@@ -111,18 +103,26 @@ const Intro: React.FC<IntroProps> = () => {
                 setIntroIndex(0);
             }
             setTime(150);
-            typing(setIntro, subText[state][0]);
+            typing(setIntro, IntroContents.description[state][0]);
+        }
+
+        function contents(type: "greeting" | "aboutme" | "description") {
+            return type === "description" ? IntroContents[type][introIndex].split('')
+                : IntroContents[type].split('');
+        }
+        function typing(dom: React.Dispatch<React.SetStateAction<string>>, text: string) {
+            dom(text);
         }
     };
 
     useEffect(() => {
         const set = setTimeout(typeIntro, time);
-        
+
         const clean = () => {
             clearTimeout(set);
         }
-        
-        return  clean;
+
+        return clean;
     }, [headline, about, intro]);
 
     return (
@@ -144,4 +144,4 @@ const Intro: React.FC<IntroProps> = () => {
     );
 };
 
-export default Intro;
+export default Intro
