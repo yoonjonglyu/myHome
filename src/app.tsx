@@ -1,9 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, HashRouter as Router, Route } from 'react-router-dom';
 
-const Main = lazy(() => import('./views/main'));
+const Main = lazy(() => import('./views/main').then((module) => ({ default: module.Main })));
 const About = lazy(() => import('./views/about'));
-const Portfolio = lazy(() => import('./views/portfolio'));
+const Portfolio = lazy(() => import('./views/portfolio').then((module) => ({ default: module.Portfolio })));
 const Tech = lazy(() => import('./views/tech'));
 const Essay = lazy(() => import('./views/essay'));
 const NotFound = lazy(() => import('./views/notFound'));
