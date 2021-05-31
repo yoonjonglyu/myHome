@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { TagList } from './tagList';
+import { TagList } from './ui/molecules/tagList';
 
 import { postContents } from '../lib/custom/post';
 import { tabIndex } from '../lib/custom/tag';
@@ -127,7 +127,7 @@ const BlogPost: React.FC<BlogPostProps> = (props) => {
             <div className="post-contents" dangerouslySetInnerHTML={{ __html: postContent }}>
             </div>
             <div className="post-tags">
-                <TagList taglist={postTags} />
+                <TagList tagList={postTags} />
             </div>
             <div className="post-comments">
                 <div id="disqus_thread"></div>

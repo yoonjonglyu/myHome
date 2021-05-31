@@ -3,14 +3,14 @@ import Styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Chip, Paper } from '@material-ui/core';
 
+interface TagListProps {
+  tagList: Array<TagProps>
+}
 interface TagProps {
   idx: number
   name: string
 }
 
-interface TagListProps {
-  taglist: Array<TagProps>
-}
 const UlPaper = Styled(Paper)`
   display: flex;
   margin: 0;
@@ -30,12 +30,11 @@ const HeadLine = Styled.h2`
   color: #b83b5e;
 `;
 
-
 const TagList: React.FC<TagListProps> = (props) => {
   const {
-    taglist
+    tagList
   } = props;
-  const [chipData, setChipData] = useState(taglist);
+  const [chipData, setChipData] = useState(tagList);
 
   const TagItems = chipData.map((data) => {
     return (
