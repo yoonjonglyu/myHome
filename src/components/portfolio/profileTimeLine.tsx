@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   Timeline,
   TimelineItem,
@@ -11,7 +10,7 @@ import {
 } from '@material-ui/lab';
 import { Cake, Flight, Work, SupervisedUserCircle, Search } from '@material-ui/icons';
 import { Paper, Typography } from '@material-ui/core';
-import styled, { createGlobalStyle } from 'styled-components';
+import Styled, { createGlobalStyle } from 'styled-components';
 
 interface ProfileTimeLineProps {
 }
@@ -32,7 +31,7 @@ const MobileTimeLine = createGlobalStyle`
       }
   }
 `;
-const FadeTimeLine = styled(Timeline)`
+const FadeTimeLine = Styled(Timeline)`
   font-size : 0.9rem;
   @keyframes fadeup {
     0% {
@@ -44,21 +43,16 @@ const FadeTimeLine = styled(Timeline)`
       transform : none;
     } 
   }
-  animation : fadeup 0.8s;
+  animation: fadeup 0.8s;
+`;
+const TimeLinePaper = Styled(Paper)`
+  padding: 6px 16px;
+`;
+const TimeLineTail = Styled(TimelineConnector)`
+  background-color: #f50057 !important;
 `;
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: '6px 16px',
-  },
-  secondaryTail: {
-    backgroundColor: theme.palette.secondary.main,
-  },
-}));
-
 const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
-  const classes = useStyles();
-
   return (
     <FadeTimeLine align="alternate">
       <MobileTimeLine />
@@ -75,7 +69,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               출생
               </Typography>
@@ -84,7 +78,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
                 차남 류재홍 슬하<br />
                 대구 출생
               </Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -100,14 +94,14 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               중국 유학
               </Typography>
             <Typography>
               아버지께서 장차 <strong>중국이 급부상하여 경제 대국이 될 것이니 중국에서 기회를 찾아보라는 뜻으로</strong> 원하셔서 중국 유학길에 올랐다.
               </Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -120,10 +114,10 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineDot color="primary" variant="outlined">
             <SupervisedUserCircle />
           </TimelineDot>
-          <TimelineConnector className={classes.secondaryTail} />
+          <TimeLineTail />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               귀국 후 군입대
               </Typography>
@@ -134,7 +128,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
                 집에서 아무런 금전적인 지원을 받지 않는 조건으로 독립하기 위해서 먼저 한국 남자라면 언젠가는 마무리 지어야 할 병역 문제를 먼저 해결하기로 결심하고 귀국</strong><br />
                 육군 현역으로 입대를 했다.
               </Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -150,14 +144,14 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               전역 후 직업 탐색
               </Typography>
             <Typography>무사히 전역 한후,<br />
               <strong>자신이 정한 인생의 목표인 등봉조극(登峰造極)을 위해서 직업을 신중히 탐색했고</strong>, 여러 시행착오 끝에 <strong>개발자를 업으로</strong> 삼기로 결정했다.<br /><br />
               <small>登峰造極(등봉조극): 산에 올라 정상에 도달한다는 뜻으로, 학문이나 기술이 심오한 경지에 도달함을 비유하여 이르는 말.</small></Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -170,10 +164,10 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineDot color="primary" variant="outlined">
             <Work />
           </TimelineDot>
-          <TimelineConnector className={classes.secondaryTail} />
+          <TimeLineTail />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               페르소나
               </Typography>
@@ -185,7 +179,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
                 내가 원하던 목표인 개발을 통해서 <strong>해당 회사의 프로젝트 개발(SI, 공공기관 + 대기업 계열사), 기본적인 솔루션 개발(자사 제품 + 개발 라이브러리), 기본적인 개발 환경 구축 등<br />
                 을 이루고</strong> 그 과정에서 쌓였던 스트레스 요인인 사내 정치 + 낮은 연봉 + 시너지 없는 환경을 이유로 퇴사 후 다시 독학을 시작했다.
               </Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -201,7 +195,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               더블디 그 후 서울로
               </Typography>
@@ -214,7 +208,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
                 처음 목표 였던 오픈소스 개발이 가능할 정도로 제대로 된 개발 환경을 구축하는게 회사 여건 상 불가능 하다는 걸 느껴서 퇴사를 했다.<br />
               <strong>여러모로 검토 해본 결과 대구에서는 내가 목표로 하는 것을 이룰 만한 환경을 찾기 힘들다는 걸 깨닫고 서울로 올라왔다.</strong>
             </Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -227,10 +221,10 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
           <TimelineDot color="primary" variant="outlined">
             <Work />
           </TimelineDot>
-          <TimelineConnector className={classes.secondaryTail} />
+          <TimeLineTail />
         </TimelineSeparator>
         <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
+          <TimeLinePaper elevation={3}>
             <Typography variant="h6" component="h1">
               미래의 지향점
               </Typography>
@@ -241,7 +235,7 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
                 지금까지 이룬 목표는 "1. 개발 회사에서 일 잘 해보자. 2. 1년차 쯤 연봉 3천넘기자." 이고 <br />
                 지금 당장의 목표는 <strong>"1.오픈소스 개발(컨트리뷰터)과 네카라 같은 IT 기업에서 S급 인재가 되어보자."</strong>이다.
               </Typography>
-          </Paper>
+          </TimeLinePaper>
         </TimelineContent>
       </TimelineItem>
     </FadeTimeLine>
