@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import TagList from './tagList';
+import { TagList } from './tagList';
 
 import { postContents } from '../lib/custom/post';
 import { tabIndex } from '../lib/custom/tag';

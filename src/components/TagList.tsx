@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import Styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import { Chip, Paper } from '@material-ui/core';
 
 interface TagProps {
@@ -11,43 +11,39 @@ interface TagProps {
 interface TagListProps {
   taglist: Array<TagProps>
 }
+const UlPaper = Styled(Paper)`
+  display: flex;
+  margin: 0;
+  padding: 4px;
+  flex-wrap: wrap;
+  list-style: none;
+`;
+const LiChip: any = Styled(Chip)`
+  margin: 4px;
+  cursor: pointer
+`;
+const HeadLine = Styled.h2`
+  display: block;
+  margin: 8px 3px;
+  font-size: 1rem;
+  text-align: unset;
+  color: #b83b5e;
+`;
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display : 'flex',
-    flexWrap : 'wrap',
-    listStyle : 'none',
-    padding : theme.spacing(0.5),
-    margin : 0,
-  },
-  chip : {
-    margin : theme.spacing(0.5),
-    cursor : 'pointer'
-  },
-  headLine: {
-    display : 'block',
-    margin : '8px 3px',
-    fontSize : '1rem',
-    textAlign : 'unset',
-    color : '#b83b5e'
-  }
-}));
 
 const TagList: React.FC<TagListProps> = (props) => {
-  const classes = useStyles();
   const {
     taglist
   } = props;
   const [chipData, setChipData] = useState(taglist);
-  
+
   const TagItems = chipData.map((data) => {
     return (
       <li key={data.idx}>
-        <Chip
-          to={`?tags=${data.idx}`}
+        <LiChip
           label={data.name}
-          className={classes.chip}
           component={Link}
+          to={`?tags=${data.idx}`}
         />
       </li>
     );
@@ -55,12 +51,12 @@ const TagList: React.FC<TagListProps> = (props) => {
 
   return (
     <React.Fragment>
-    <h2 className={classes.headLine}># 태그리스트</h2>
-    <Paper component="ul" className={classes.root}>
-      {TagItems}
-    </Paper>
+      <HeadLine># 태그리스트</HeadLine>
+      <UlPaper component="ul">
+        {TagItems}
+      </UlPaper>
     </React.Fragment>
   );
 };
 
-export default TagList;
+export { TagList, TagListProps }
