@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import Contact from '../components/contact';
-import ProfileTimeLine from '../components/portfolio/profileTimeLine';
+import { ProfileTimeLine } from '../components/portfolio/profileTimeLine';
 
 import DevFront1 from '../assets/images/devmatch.jpg';
 import SamTest from '../assets/images/sam-test.jpg';

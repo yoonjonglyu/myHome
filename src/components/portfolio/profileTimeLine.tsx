@@ -249,4 +249,4 @@ const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
 };
 
 
-export default ProfileTimeLine;
+export { ProfileTimeLine, ProfileTimeLineProps }
