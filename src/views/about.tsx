@@ -2,7 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
-import Contact from '../components/contact';
+import Contact from '../components/ui/organisms/contact';
 import { ProfileTimeLine } from '../components/portfolio/profileTimeLine';
 
 import DevFront1 from '../assets/images/devmatch.jpg';
