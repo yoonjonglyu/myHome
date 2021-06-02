@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Styled from 'styled-components';
 
-import Contact from '../../contact';
+import Contact from '../../ui/organisms/contact';
 
 interface FooterProps {
 }
