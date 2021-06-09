@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Contact: React.FC = () => {
+const Contact: React.FC = function () {
     const classes = useStyles();
 
     return (

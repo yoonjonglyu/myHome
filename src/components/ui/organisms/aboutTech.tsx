@@ -44,7 +44,7 @@ const TechIcon = Styled.img`
     vertical-align : middle;
 `;
 
-const AboutTech: React.FC = () => {
+const AboutTech: React.FC = function () {
     const frontEnd: Array<{ key: string, value: string }> = [
         {
             key: "HTML",
