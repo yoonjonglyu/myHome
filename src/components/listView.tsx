@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const ListView: React.FC<ListViewProps> = (props) => {
+const ListView: React.FC<ListViewProps> = function (props) {
     const classes = useStyles();
     const [tags, setTags]: Array<any> = useState([]);
     const tag = tagList();

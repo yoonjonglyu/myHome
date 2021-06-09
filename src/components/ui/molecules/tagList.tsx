@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Chip, Paper } from '@material-ui/core';
@@ -30,13 +30,12 @@ const HeadLine = Styled.h2`
   color: #b83b5e;
 `;
 
-const TagList: React.FC<TagListProps> = (props) => {
+const TagList: React.FC<TagListProps> = function (props) {
   const {
     tagList
   } = props;
-  const [chipData, setChipData] = useState(tagList);
 
-  const TagItems = chipData.map((data) => {
+  const TagItems = tagList.map((data) => {
     return (
       <li key={data.idx}>
         <LiChip

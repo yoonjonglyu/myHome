@@ -52,7 +52,7 @@ const TimeLineTail = Styled(TimelineConnector)`
   background-color: #f50057 !important;
 `;
 
-const ProfileTimeLine: React.FC<ProfileTimeLineProps> = () => {
+const ProfileTimeLine: React.FC<ProfileTimeLineProps> = function () {
   return (
     <FadeTimeLine align="alternate">
       <MobileTimeLine />

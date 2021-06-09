@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import Styled, { keyframes } from 'styled-components';
 
-import BackGroundIMG from '../assets/images/intro_1280.png';
+import BackGroundIMG from '../../assets/images/intro_1280.png';
 
 const Cursor = keyframes`
     0%{border-right: 1px solid #fff} 
@@ -13,7 +13,7 @@ const StarLight = keyframes`
     50%{opacity : 0.8} 
     100%{opacity : 1} 
 `;
-const IntroBox = styled.div`
+const IntroBox = Styled.div`
     width : 100%;
     min-height : 380px;
     text-align : center;
@@ -22,7 +22,7 @@ const IntroBox = styled.div`
     background-size : cover;
 `;
 
-const Headline = styled.h1<{ isEnd: boolean }>`
+const Headline = Styled.h1<{ isEnd: boolean }>`
     display : inline-block;
     margin : 90px 0 20px 0;
     font-size : ${props => props.isEnd ? "2.5rem" : "2rem"};
@@ -33,7 +33,7 @@ const Headline = styled.h1<{ isEnd: boolean }>`
         animation : ${props => props.isEnd ? 'none' : Cursor} 0.5s step-end infinite;
     }
 `;
-const AboutHead = styled.span<{ isStart: boolean, isEnd: boolean }>`
+const AboutHead = Styled.span<{ isStart: boolean, isEnd: boolean }>`
     display : inline-block;
     margin : 20px 8px;
     font-size : 1.3rem;
@@ -45,7 +45,7 @@ const AboutHead = styled.span<{ isStart: boolean, isEnd: boolean }>`
         animation : ${props => (props.isStart && props.isEnd === false) ? Cursor : 'none'} 0.5s step-end infinite;
     }
 `;
-const IntroText = styled.span<{ isStart: boolean }>`
+const IntroText = Styled.span<{ isStart: boolean }>`
     display : inline-block;
     font-size : 1.2rem;
     line-height : 1.5rem;

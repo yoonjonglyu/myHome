@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import Intro from './intro';
 
 export default {
-    title: "개인블로그/Intro",
+    title: "개인블로그/Main/Intro",
     component: Intro
 } as Meta
 

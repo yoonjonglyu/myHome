@@ -7,21 +7,21 @@ const Portfolio = lazy(() => import('./views/portfolio').then((module) => ({ def
 const Tech = lazy(() => import('./views/tech'));
 const Essay = lazy(() => import('./views/essay'));
 const NotFound = lazy(() => import('./views/notFound'));
-import Loading from './components/loading';
+import Loading from './components/ui/atoms/loading';
 
 const App: React.FC = function () {
     return (
         <Router>
-            <Switch>
-                <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading />}>
+                <Switch>
                     <Route exact path="/" component={Main} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/portfolio" component={Portfolio} />
                     <Route exact path="/tech" component={Tech} />
                     <Route exact path="/essay" component={Essay} />
-                </Suspense>
-                <Route exact component={NotFound} />
-            </Switch>
+                    <Route exact component={NotFound} />
+                </Switch>
+            </Suspense>
         </Router>
     );
 };

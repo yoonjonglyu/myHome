@@ -58,7 +58,7 @@ const PostAuthor = styled.strong`
     font-size : 1rem;
 `;
 
-const BlogPost: React.FC<BlogPostProps> = (props) => {
+const BlogPost: React.FC<BlogPostProps> = function (props) {
     const post = postContents();
     const tab = tabIndex();
     const {
