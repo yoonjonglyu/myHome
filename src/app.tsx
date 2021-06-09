@@ -7,7 +7,7 @@ const Portfolio = lazy(() => import('./views/portfolio').then((module) => ({ def
 const Tech = lazy(() => import('./views/tech'));
 const Essay = lazy(() => import('./views/essay'));
 const NotFound = lazy(() => import('./views/notFound'));
-import Loading from './components/loading';
+import Loading from './components/ui/atoms/loading';
 
 const App: React.FC = function () {
     return (
