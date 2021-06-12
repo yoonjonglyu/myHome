@@ -12,4 +12,4 @@ const PortfolioModal: React.FC<PortfolioModalProps> = function () {
 };
 
 
-export default PortfolioModal;
+export { PortfolioModal, PortfolioModalProps }
