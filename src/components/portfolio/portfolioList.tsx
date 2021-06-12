@@ -2,9 +2,9 @@ import React from 'react';
 import Styled from 'styled-components';
 
 interface PortfolioListProps {
-    portfolioList: Array<portfolioPorps>
+    portfolioList: Array<PortfolioPorps>
 }
-interface portfolioPorps {
+interface PortfolioPorps {
     idx: number
     date: string
     title: string
@@ -37,12 +37,10 @@ const TagItem = Styled.li`
 const PortfolioList: React.FC<PortfolioListProps> = function (props) {
     const {
         portfolioList
-    } = props; // 컨트롤러같은 구성이 좀 더 세분화 된다는 가정하에 임시 props 컴포넌트 단위로 아키텍처 구성을 어떻게 할지는 아직 고민할 부분이 많다.
+    } = props;
     const tmpportfolioList: Array<any> = [];
 
     const PortfolioItem = tmpportfolioList.length > 0 ? tmpportfolioList.map((item, key) => {
-        const TagList = item.tags.map((tag: any) => (<TagItem key={tag.idx}>{tag.name}</TagItem>));
-
         return (
             <PortItem key={key}>
                 <PortThum src={item.thum} />
@@ -53,7 +51,7 @@ const PortfolioList: React.FC<PortfolioListProps> = function (props) {
                 </PortBox>
                 <hr style={{ clear: "both" }} />
                 <PortUl>
-                    {TagList}
+                    {item.tags.map((tag: any) => (<TagItem key={tag.idx}>{tag.name}</TagItem>))}
                 </PortUl>
             </PortItem>
         );
@@ -69,4 +67,4 @@ const PortfolioList: React.FC<PortfolioListProps> = function (props) {
 };
 
 
-export default PortfolioList;
+export { PortfolioList, PortfolioListProps }

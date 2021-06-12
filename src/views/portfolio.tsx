@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import ListView from '../components/listView';
-import PortfolioList from '../components/portfolio/portfolioList';
+import { PortfolioList } from '../components/portfolio/portfolioList';
 
 interface PortfolioProps {
 }
