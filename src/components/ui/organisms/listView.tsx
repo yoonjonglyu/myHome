@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import Styled from 'styled-components';
 import { Grid } from '@material-ui/core';
 
-import { ListItem } from './ui/molecules/listItem';
+import { ListItem } from '../molecules/listItem';
 
-import { tagList, tabIndex } from '../lib/custom/tag';
+import { tagList, tabIndex } from '../../../lib/custom/tag';
 
 interface ListViewProps {
 
 }
 
-const useStyles = makeStyles(() => ({
-    root: {
-        flexGrow: 1,
-    }
-}));
+const TagGrid: any = Styled(Grid)`
+    flex-grow : 1;
+`;
 
 const ListView: React.FC<ListViewProps> = function (props) {
-    const classes = useStyles();
     const [tags, setTags]: Array<any> = useState([]);
     const tag = tagList();
     const tab = tabIndex();
@@ -41,16 +38,12 @@ const ListView: React.FC<ListViewProps> = function (props) {
         setTags(state);
     }, [tab.tabIndex, tag.tagList]);
 
-    const ListRow = (
-        <Grid container item xs={12} spacing={1}>
-            <ListItem children={tags} />
-        </Grid>
-    );
-
     return (
-        <Grid container spacing={1} component="nav" className={classes.root}>
-            {ListRow}
-        </Grid>
+        <TagGrid container spacing={1} component="nav">
+            <Grid container item xs={12} spacing={1}>
+                <ListItem children={tags} />
+            </Grid>
+        </TagGrid>
     );
 };
 

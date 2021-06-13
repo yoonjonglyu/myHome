@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
-import ListView from '../components/listView';
+import ListView from '../components/ui/organisms/listView';
 const BlogPost = lazy(() => import('../components/blogPost'));
 const PostList = lazy(() => import('../components/postList'));
 
