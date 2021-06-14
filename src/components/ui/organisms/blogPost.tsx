@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import Styled, { createGlobalStyle } from 'styled-components';
 
-import { TagList } from './ui/molecules/tagList';
+import { TagList } from '../molecules/tagList';
 
-import { postContents } from '../lib/custom/post';
-import { tabIndex } from '../lib/custom/tag';
+import { postContents } from '../../../lib/custom/post';
+import { tabIndex } from '../../../lib/custom/tag';
 
 interface BlogPostProps {
 
@@ -43,18 +43,18 @@ const BlogPostStyle = createGlobalStyle`
         color : #f08a5d;
     }
 `;
-const PostTitle = styled.h2`
+const PostTitle = Styled.h2`
     font-size : 2rem;
     text-align : center;
 `;
-const PostMeta = styled.p`
+const PostMeta = Styled.p`
     color : #2b2e4a;
 `;
-const PostTime = styled.time`
+const PostTime = Styled.time`
     font-size : 1.1rem;
     padding-right : 6px;
 `;
-const PostAuthor = styled.strong`
+const PostAuthor = Styled.strong`
     font-size : 1rem;
 `;
 
@@ -93,61 +93,72 @@ const BlogPost: React.FC<BlogPostProps> = function (props) {
     };
 
     useEffect(() => {
-        const locationState = location.hash.split('?')[1].split('=');
-        if (locationState[0] === "post") {
+        const queryString = new URLSearchParams(location.hash.split("?")[1]);
+        if (isPost()) {
             switch (tab.tabIndex) {
                 case 2:
-                    post.getPostContents("essay", locationState[1]);
+                    post.getPostContents("essay", getPostIdx());
                     break;
                 case 3:
-                    post.getPostContents("tech", locationState[1]);
+                    post.getPostContents("tech", getPostIdx());
                     break;
                 case 4:
-                    post.getPostContents("portfolio", locationState[1]);
+                    post.getPostContents("portfolio", getPostIdx());
                     break;
                 default:
                     break;
             }
-            Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${location.hash.split('\/').slice(1).join('\/')}`);
+            Disqus('testTitle', `https://yoonjonglyu.github.io/myHome/${tab.tabIndex}_${getPostIdx()}`);
+        }
+
+        function isPost() {
+            return queryString.has("post");
+        }
+        function getPostIdx() {
+            const result = queryString.get("post");
+            if (result) {
+                return result;
+            } else {
+                return '0';
+            }
         }
     }, [tab.tabIndex]);
 
-    const blogPost = post.postContents.postTitle !== "블로그 글 타이틀" ? (
+    return (
         <React.Fragment>
             <BlogPostStyle />
-            <header className="post-header">
-                <PostTitle className="post-title">{postTitle}</PostTitle>
-                <PostMeta className="post-meta">
-                    <PostTime dateTime={postDate}>{postDate}</PostTime>
-                    <PostAuthor className="author">
-                        {postAuthor}
-                    </PostAuthor>
-                </PostMeta>
-            </header>
-            <div className="post-contents" dangerouslySetInnerHTML={{ __html: postContent }}>
-            </div>
-            <div className="post-tags">
-                <TagList tagList={postTags} />
-            </div>
-            <div className="post-comments">
-                <div id="disqus_thread"></div>
-            </div>
-            <script id="dsq-count-scr" src="//https-yoonjonglyu-github-io-myhome.disqus.com/count.js" async></script>
-        </React.Fragment>
-    ) : (
-        <React.Fragment>
-            <BlogPostStyle />
-            <header className="post-header">
-                <PostTitle className="post-title">삭제된 글입니다.</PostTitle>
-            </header>
+            {
+                post.postContents.postTitle ?
+                    <header className="post-header">
+                        <PostTitle className="post-title">{postTitle}</PostTitle>
+                        <PostMeta className="post-meta">
+                            <PostTime dateTime={postDate}>{postDate}</PostTime>
+                            <PostAuthor className="author">
+                                {postAuthor}
+                            </PostAuthor>
+                        </PostMeta>
+                    </header>
+                    :
+                    <header className="post-header">
+                        <PostTitle className="post-title">삭제된 글입니다.</PostTitle>
+                    </header>
+            }
+            {
+                post.postContents.postTitle &&
+                <>
+                    <div className="post-contents" dangerouslySetInnerHTML={{ __html: postContent }}>
+                    </div>
+                    <div className="post-tags">
+                        <TagList tagList={postTags} />
+                    </div>
+                </>
+            }
             <div className="post-comments">
                 <div id="disqus_thread"></div>
             </div>
             <script id="dsq-count-scr" src="//https-yoonjonglyu-github-io-myhome.disqus.com/count.js" async></script>
         </React.Fragment>
     );
-
-    return blogPost;
 };
 
 

@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import ListView from '../components/ui/organisms/listView';
-const BlogPost = lazy(() => import('../components/blogPost'));
+const BlogPost = lazy(() => import('../components/ui/organisms/blogPost'));
 const PostList = lazy(() => import('../components/postList'));
 
 const Headline = Styled.h1`
