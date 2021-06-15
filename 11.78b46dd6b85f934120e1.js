@@ -24,4 +24,4 @@
     padding : 50px 0 0 0;
     minHeight : 90vh;
 `,x=({children:e})=>l.a.createElement("div",{className:"wrap"},l.a.createElement(d,null),l.a.createElement("main",{role:"main"},l.a.createElement(g,{maxWidth:"md"},e)),l.a.createElement(f,null))},161:function(e,a,t){"use strict";t.r(a);var n=t(0),l=t.n(n),r=t(107);a.default=function(){return l.a.createElement(r.a,null,l.a.createElement("h1",null,"Not FOUND PAGES!! 404."))}}}]);
-//# sourceMappingURL=11.054507156d26cca6f2fe.js.map
+//# sourceMappingURL=11.78b46dd6b85f934120e1.js.map

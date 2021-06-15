@@ -1,4 +1,4 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{104:function(e,a,t){"use strict";t.d(a,"b",(function(){return r})),t.d(a,"a",(function(){return c}));var n=t(36),l=t(9);function r(){const{tagList:e}=Object(n.c)(e=>({tagList:e.TagList.tagList}));return{tagList:e}}function c(){const{tabIndex:e}=Object(n.c)(e=>({tabIndex:e.TabIndex.tabIndex})),a=Object(n.b)();return{tabIndex:e,handleTapIndex:e=>{a(l.h(e))}}}},106:function(e,a,t){"use strict";var n=t(0),l=t.n(n),r=t(33),c=t(151),o=t(167),i=t(155),m=t(156),u=t(157),s=t(152),E=t(25),d=t(153),b=t(154),p=t.p+"assets/945677dc29c49b6215192d9f9a49b9ce.pdf";const f=Object(r.b)(c.a)`
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{104:function(e,a,t){"use strict";t.d(a,"b",(function(){return r})),t.d(a,"a",(function(){return c}));var n=t(36),l=t(9);function r(){const{tagList:e}=Object(n.c)(e=>({tagList:e.TagList.tagList}));return{tagList:e}}function c(){const{tabIndex:e}=Object(n.c)(e=>({tabIndex:e.TabIndex.tabIndex})),a=Object(n.b)();return{tabIndex:e,handleTapIndex:e=>{a(l.h(e))}}}},106:function(e,a,t){"use strict";var n=t(0),l=t.n(n),r=t(33),c=t(151),o=t(167),i=t(155),m=t(156),u=t(157),s=t(152),E=t(25),d=t(153),b=t(154),p=t.p+"assets/945677dc29c49b6215192d9f9a49b9ce.pdf";const f=Object(r.b)(c.a)`
     text-align: center;
 `,g=r.b.h1`
     margin: 8px 0;
@@ -125,4 +125,4 @@
     font-size: 1.1rem;
     line-height: 1.6rem;
 `,U=function(e){const a=Object(F.a)();return l.a.createElement(o.a,null,l.a.createElement(l.a.Fragment,null,l.a.createElement("section",{className:"main-headline"},l.a.createElement(p,null)),l.a.createElement("section",{className:"main-about"},l.a.createElement(_,null,"개인 연력"),l.a.createElement(G,{to:"./about",title:"더 알아보기",onClick:e=>{return t=1,a.handleTapIndex(t),void window.scrollTo(0,0);var t}},l.a.createElement(f.a,null))),l.a.createElement("section",{className:"main-skill"},l.a.createElement(_,null,"기술 스택"),l.a.createElement(D,null,"실무에서 실제로 사용해 봤거나 토이 프로젝트에서 활용 해본적 있는 것들",l.a.createElement("br",null),"지금 당장 실무에 투입 되어서도 활용 가능한 수준의 기술 중 대표적인 것들입니다."),l.a.createElement(Q,null)),l.a.createElement("section",{className:"main-portfolio"},l.a.createElement(_,null,"포트폴리오"))))}}}]);
-//# sourceMappingURL=10.d7047a828b88eae70fdf.js.map
+//# sourceMappingURL=7.3a57df03cc9ef4a29e94.js.map
