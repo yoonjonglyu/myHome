@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Styled from 'styled-components';
 
-import { postList } from '../lib/custom/post';
-import { tabIndex } from '../lib/custom/tag';
+import { postList } from '../../../lib/custom/post';
+import { tabIndex } from '../../../lib/custom/tag';
 
 interface PostListProps {
 
@@ -38,36 +38,37 @@ const SubText = Styled.p`
 `;
 
 const PostList: React.FC<PostListProps> = function (props) {
-    const {
-    } = props;
     const post = postList();
     const tab = tabIndex();
-    const [tag, setTag] = useState(location.hash.split("?")[1]?.split("=")[1]);
 
     useEffect(() => {
-        const isTag = location.hash.split("?")[1]?.split("=");
+        const queryString = new URLSearchParams();
         switch (tab.tabIndex) {
             case 2:
-                isTag?.[0] === "tags" ? post.getPostListByTag("essay", isTag[1]) : post.getPostList("essay");
+                isTag() ? post.getPostListByTag("essay", getTag()) : post.getPostList("essay");
                 break;
             case 3:
-                isTag?.[0] === "tags" ? post.getPostListByTag("tech", isTag[1]) : post.getPostList("tech");
+                isTag() ? post.getPostListByTag("tech", getTag()) : post.getPostList("tech");
                 break;
             case 4:
-                isTag?.[0] === "tags" ? post.getPostListByTag("portfolio", isTag[1]) : post.getPostList("portfolio");
+                isTag() ? post.getPostListByTag("portfolio", getTag()) : post.getPostList("portfolio");
                 break;
             default:
                 break;
         }
 
-        const watchTag = setInterval(() => { // 커스텀 훅으로 모두 묶어서 각 이벤트마다 해당 훅을 실행시킨다면 이렇게 인터벌 할 필요도 없겠지
-            if (tag !== location.hash.split("?")[1]?.split("=")[1]) {
-                setTag(location.hash.split("?")[1]?.split("=")[1]);
+        function isTag() {
+            return queryString.has("tags") && queryString.get("tags") !== null;
+        }
+        function getTag() {
+            const result = queryString.get("tags");
+            if (result !== null) {
+                return result;
+            } else {
+                return '';
             }
-        });
-
-        return () => { clearInterval(watchTag) };
-    }, [tab.tabIndex, tag]);
+        }
+    }, [tab.tabIndex]);
 
     const List = post.postList.length > 0 ? post.postList.map((post, key) => {
         return (
@@ -90,4 +91,4 @@ const PostList: React.FC<PostListProps> = function (props) {
     );
 };
 
-export default PostList
+export { PostList, PostListProps }
