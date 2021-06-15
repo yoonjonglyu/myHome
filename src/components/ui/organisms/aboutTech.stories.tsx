@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import AboutTech from './aboutTech';
 
 export default {
-    title: "개인블로그/Ui/Organisms",
+    title: "개인블로그/Ui/Organisms/AboutTech",
     component: AboutTech
 } as Meta
 
