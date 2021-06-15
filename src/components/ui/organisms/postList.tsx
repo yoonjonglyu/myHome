@@ -40,9 +40,13 @@ const SubText = Styled.p`
 const PostList: React.FC<PostListProps> = function (props) {
     const post = postList();
     const tab = tabIndex();
-
+    const [tags, setTags] = useState(location.hash.split("?")[1]);
     useEffect(() => {
-        const queryString = new URLSearchParams();
+        console.log(tags);
+        if (tags !== location.hash.split("?")[1]) setTags(location.hash.split("?")[1]);
+    });
+    useEffect(() => {
+        const queryString = new URLSearchParams(tags);
         switch (tab.tabIndex) {
             case 2:
                 isTag() ? post.getPostListByTag("essay", getTag()) : post.getPostList("essay");
@@ -68,7 +72,7 @@ const PostList: React.FC<PostListProps> = function (props) {
                 return '';
             }
         }
-    }, [tab.tabIndex]);
+    }, [tab.tabIndex, tags]);
 
     const List = post.postList.length > 0 ? post.postList.map((post, key) => {
         return (
