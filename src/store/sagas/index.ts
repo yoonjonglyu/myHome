@@ -1,4 +1,4 @@
-import { all, takeEvery } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 import * as Types from '../actions/actionTypes';
 
 import GetAllTags from './post/getAllTags';
@@ -11,11 +11,11 @@ import GetPortfolioContents from './portfolio/getPortfolioContents';
 function* RootSaga() {
     yield all([
         GetAllTags(),
-        takeEvery(Types.LOAD_POST_LIST, GetPostList),
-        takeEvery(Types.LOAD_POST_CONTENTS, GetPostContents),
-        takeEvery(Types.LOAD_POST_LIST_BY_TAG, GetPostListByTag),
-        takeEvery(Types.LOAD_PORTFOLIO_LIST, GetPortfolioList),
-        takeEvery(Types.LOAD_PORTFOLIO_CONTENTS, GetPortfolioContents),
+        takeLatest(Types.LOAD_POST_LIST, GetPostList),
+        takeLatest(Types.LOAD_POST_CONTENTS, GetPostContents),
+        takeLatest(Types.LOAD_POST_LIST_BY_TAG, GetPostListByTag),
+        takeLatest(Types.LOAD_PORTFOLIO_LIST, GetPortfolioList),
+        takeLatest(Types.LOAD_PORTFOLIO_CONTENTS, GetPortfolioContents),
     ]);
 };
 
