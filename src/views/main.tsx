@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 
 import { Layout } from '../components/layout/layout';
 import Intro from '../components/main/intro';
-import { ProfileTimeLine } from '../components/portfolio/profileTimeLine';
+import { ProfileTimeLine } from '../components/about/profileTimeLine';
 import AboutTech from '../components/ui/organisms/aboutTech';
 
 import { tabIndex } from '../lib/custom/tag';
