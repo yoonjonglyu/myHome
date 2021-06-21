@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import { ProfileTimeLine, ProfileTimeLineProps } from './profileTimeLine';
 
 export default {
-    title: "개인블로그/Portfolio/ProfileTimeLine",
+    title: "개인블로그/About/ProfileTimeLine",
     component: ProfileTimeLine
 } as Meta
 
